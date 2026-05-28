@@ -1,92 +1,104 @@
+import ScrollReveal from "./ScrollReveal";
+
 const stats = [
   { value: "3.92", label: "GPA" },
   { value: "5×", label: "Dean's List" },
-  { value: "3+", label: "Industry Roles" },
+  { value: "3+", label: "Industry roles" },
   { value: "B.S.", label: "Stats & Data Science" },
 ];
 
 const currentStack = [
-  "Python",
-  "AWS",
-  "SQL",
-  "FastAPI",
-  "PyTorch",
-  "Docker",
-  "TypeScript",
-  "Next.js",
+  "Python", "AWS", "SQL", "FastAPI", "PyTorch", "Docker", "TypeScript", "Next.js", "Javascript"
 ];
+
 
 export default function About() {
   return (
-    <section id="about" className="py-28 px-6">
+    <section id="about" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-14">
-          <span className="font-mono text-[#a78bfa] text-sm">01.</span>
-          <h2 className="text-3xl font-bold text-[#e2e8f0]">About</h2>
-          <div className="flex-1 h-px bg-[#1d1a30] ml-3" />
-        </div>
+        <ScrollReveal>
+          <div className="flex items-baseline gap-4 mb-10">
+            <span className="font-mono text-xs tracking-widest" style={{ color: "var(--text-3)" }}>01</span>
+            <h2
+              className="text-3xl"
+              style={{ fontFamily: "var(--font-dm-serif)", fontStyle: "italic", color: "var(--text)" }}
+            >
+              About
+            </h2>
+            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
+          </div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-5 gap-14">
+        <div className="grid md:grid-cols-5 gap-12">
           {/* Bio */}
-          <div className="md:col-span-3 space-y-5 text-[#94a3b8] leading-relaxed">
-            <p>
-              Hi! I&apos;m{" "}
-              <span className="text-[#e2e8f0] font-medium">Kalynn Willis</span>,
-              a Statistics & Data Science graduate of{" "}
-              <span className="text-[#e2e8f0] font-medium">UW-Madison</span>{" "}
-              with a 3.92 GPA and five Dean&apos;s List semesters. I build
-              things at the intersection of data engineering, machine learning,
-              and AI.
-            </p>
-            <p>
-              Currently a{" "}
-              <span className="text-[#e2e8f0] font-medium">
-                Data Engineer Co-op at AprilAire
-              </span>
-              , I&apos;ve shipped a customer-facing AI assistant powered by
-              XGBoost, designed MCP servers for IoT automation, engineered ETL
-              pipelines for high-volume device telemetry, and built RAG-style
-              research chatbots for UW&apos;s Biochemistry department.
-            </p>
-            <p>
-              I love turning messy, high-dimensional data into clean, reliable
-              systems — whether that&apos;s a streaming pipeline, an ML model,
-              or a tool that makes a research team&apos;s life easier.
-            </p>
-
-            <div className="pt-2">
-              <p className="font-mono text-[#a78bfa] text-xs mb-3 tracking-wider">
-                # currently working with:
+          <ScrollReveal className="md:col-span-3">
+            <div className="space-y-4 leading-relaxed text-[1.025rem]" style={{ color: "var(--text-2)" }}>
+              <p>
+                Hi, I&apos;m{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">Kalynn Willis</span>
+                {" "}— a Statistics &amp; Data Science graduate of{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">UW-Madison</span>.
+                {" "}My background spans{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">molecular biology and genetics research</span>
+                {" "}— from building RAG chatbots for UW&apos;s Biochemistry department to working
+                on ML models for drug discovery at Arrowhead Pharmaceuticals.
+                That scientific foundation shapes how I think about data.
               </p>
-              <div className="flex flex-wrap gap-2">
-                {currentStack.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-xs px-3 py-1 bg-[#0e0c1f] border border-[#1d1a30] text-[#94a3b8] rounded hover:border-[#a78bfa]/40 hover:text-[#a78bfa] transition-colors"
-                  >
-                    {t}
-                  </span>
-                ))}
+              <p>
+                Currently a{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">Data Engineer Co-op at AprilAire</span>,
+                {" "}I&apos;m shipping Merv — an AI assistant that recommends air-quality products —
+                and building the MCP servers and ETL pipelines that connect our IoT devices to
+                real-time decisions.
+              </p>
+
+              <div className="pt-2">
+                <p className="font-mono text-[10px] tracking-widest uppercase mb-3" style={{ color: "var(--text-3)" }}>
+                  Currently working with
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {currentStack.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-xs px-2.5 py-1 rounded"
+                      style={{
+                        background: "var(--bg-tinted)",
+                        border: "1px solid var(--border)",
+                        color: "var(--text-2)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Stats */}
-          <div className="md:col-span-2 grid grid-cols-2 gap-4 content-start">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="bg-[#0e0c1f] border border-[#1d1a30] rounded-xl p-6 text-center hover:border-[#a78bfa]/40 transition-colors group"
-              >
-                <div className="text-3xl font-bold text-[#a78bfa] font-mono mb-1 group-hover:text-[#f472b6] transition-colors">
-                  {s.value}
+          <ScrollReveal className="md:col-span-2" delay={100}>
+            <div
+              className="grid grid-cols-2 gap-x-6 gap-y-5 border-l pl-6"
+              style={{ borderColor: "var(--border)" }}
+            >
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <div
+                    className="text-2xl leading-none"
+                    style={{ fontFamily: "var(--font-dm-serif)", color: "var(--accent)" }}
+                  >
+                    {s.value}
+                  </div>
+                  <div
+                    className="text-[10px] font-mono tracking-wider uppercase mt-1.5"
+                    style={{ color: "var(--text-3)" }}
+                  >
+                    {s.label}
+                  </div>
                 </div>
-                <div className="text-xs text-[#475569] uppercase tracking-wider">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

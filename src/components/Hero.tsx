@@ -1,183 +1,196 @@
 "use client";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
-const LINES = [
-  { cmd: "whoami", out: "kalynn_willis" },
-  { cmd: "cat major.txt", out: "Statistics & Data Science @ UW-Madison" },
-  { cmd: "echo $STACK", out: "Python · SQL · AWS · PyTorch · FastAPI" },
-];
-
-// IoT network node positions (% of SVG viewBox 200x300)
-const NODES = [
-  { x: 30,  y: 40  },
-  { x: 130, y: 25  },
-  { x: 170, y: 100 },
-  { x: 140, y: 200 },
-  { x: 55,  y: 240 },
-  { x: 20,  y: 155 },
-  { x: 100, y: 130 },
-];
-
-const EDGES = [
-  [0, 1], [1, 2], [2, 3], [3, 4],
-  [4, 5], [5, 0], [6, 0], [6, 2],
-  [6, 3], [6, 5],
+// Each icon references part of Kalynn's background: science, IoT, stats, pharma, engineering
+const FLOAT_ICONS = [
+  {
+    x: "6%", top: "72%", duration: 24, delay: 0,
+    // atom — science/biochemistry
+    path: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+        <circle cx="12" cy="12" r="2" />
+        <ellipse cx="12" cy="12" rx="10" ry="3.5" />
+        <ellipse cx="12" cy="12" rx="10" ry="3.5" style={{ transform: "rotate(60deg)", transformOrigin: "12px 12px" }} />
+        <ellipse cx="12" cy="12" rx="10" ry="3.5" style={{ transform: "rotate(-60deg)", transformOrigin: "12px 12px" }} />
+      </svg>
+    ),
+  },
+  {
+    x: "22%", top: "82%", duration: 30, delay: 5,
+    // wifi/signal — IoT devices
+    path: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+        <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+        <circle cx="12" cy="20" r="1" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    x: "38%", top: "65%", duration: 20, delay: 10,
+    // bar chart — data science / stats
+    path: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+        <line x1="18" y1="20" x2="18" y2="9" />
+        <line x1="12" y1="20" x2="12" y2="3" />
+        <line x1="6" y1="20" x2="6" y2="13" />
+        <line x1="2" y1="20" x2="22" y2="20" />
+      </svg>
+    ),
+  },
+  {
+    x: "52%", top: "78%", duration: 27, delay: 3,
+    // flask — biochem / pharma research
+    path: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 3h6" />
+        <path d="M10 3v7L6 19h12l-4-9V3" />
+      </svg>
+    ),
+  },
+  {
+    x: "16%", top: "55%", duration: 22, delay: 14,
+    // code brackets — engineering
+    path: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Hero() {
-  const [shown, setShown] = useState(0);
-
-  useEffect(() => {
-    LINES.forEach((_, i) => {
-      setTimeout(() => setShown(i + 1), i * 900 + 400);
-    });
-  }, []);
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center px-6 overflow-hidden"
+      className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden"
     >
-      {/* Grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#a78bfa 1px, transparent 1px), linear-gradient(90deg, #a78bfa 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      {/* IoT network nodes — top right decoration */}
-      <div className="absolute top-16 right-0 w-[220px] h-[300px] hidden lg:block opacity-30 pointer-events-none">
-        <svg viewBox="0 0 200 300" width="220" height="300">
-          <defs>
-            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#a78bfa" stopOpacity="1" />
-              <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-
-          {/* Connection lines */}
-          {EDGES.map(([a, b], i) => (
-            <line
-              key={i}
-              x1={NODES[a].x} y1={NODES[a].y}
-              x2={NODES[b].x} y2={NODES[b].y}
-              stroke="#a78bfa"
-              strokeWidth="1"
-              strokeDasharray="120"
-              opacity="0.5"
-              style={{
-                animation: `lineFlow ${2.5 + (i % 4) * 0.7}s ease-in-out ${i * 0.4}s infinite`,
-              }}
-            />
-          ))}
-
-          {/* Nodes */}
-          {NODES.map((n, i) => (
-            <g key={i}>
-              {/* Ripple on hub node */}
-              {i === 6 && (
-                <circle
-                  cx={n.x} cy={n.y} r="5"
-                  fill="none"
-                  stroke="#f472b6"
-                  strokeWidth="1"
-                  style={{ animation: `ripple 2.5s ease-out 0s infinite` }}
-                />
-              )}
-              <circle
-                cx={n.x} cy={n.y} r="4"
-                fill="#a78bfa"
-                style={{
-                  animation: `nodePulse ${1.8 + (i % 3) * 0.6}s ease-in-out ${i * 0.3}s infinite`,
-                }}
-              />
-            </g>
-          ))}
-        </svg>
+      {/* Floating minimal icons — science, IoT, stats, pharma, engineering */}
+      <div className="absolute inset-0 pointer-events-none" style={{ color: "var(--accent)" }}>
+        {FLOAT_ICONS.map((icon, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: icon.x,
+              top: icon.top,
+              opacity: 0,
+              animation: `floatIcon ${icon.duration}s ease-in-out ${icon.delay}s infinite`,
+            }}
+          >
+            {icon.path}
+          </div>
+        ))}
       </div>
 
-      {/* Glow orb */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#a78bfa]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        <div className="grid md:grid-cols-[1fr_380px] gap-14 lg:gap-20 items-center">
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full pt-20">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Left: text content */}
+          <div className="animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
 
-          {/* Left: heading */}
-          <div className="animate-fade-up">
-            <p className="font-mono text-[#a78bfa] text-sm mb-5 tracking-widest uppercase">
-              $ hello, world
-            </p>
-            <h1 className="text-6xl md:text-7xl font-bold leading-none tracking-tight mb-4">
-              <span className="text-[#e2e8f0]">Kalynn</span>
+            {/* Status tag */}
+            <div className="inline-flex items-center gap-2 mb-7">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />
+              <span className="text-xs font-mono tracking-wider" style={{ color: "var(--text-3)" }}>
+                Madison, WI · open to opportunities
+              </span>
+            </div>
+
+            {/* Name */}
+            <h1
+              className="leading-[0.9] tracking-[-0.01em] mb-4"
+              style={{
+                fontFamily: "var(--font-dm-serif)",
+                fontStyle: "italic",
+                fontSize: "clamp(3.6rem, 8.5vw, 6rem)",
+                color: "var(--text)",
+              }}
+            >
+              Kalynn
               <br />
-              <span className="text-[#a78bfa]">Willis</span>
+              <span style={{ color: "var(--accent)" }}>Willis</span>
             </h1>
-            <p className="font-mono text-[#f472b6] text-lg mb-3">
-              Data Engineer & Data Scientist
+
+            {/* Title */}
+            <p className="text-xs font-mono tracking-[0.18em] uppercase mb-5" style={{ color: "var(--text-3)" }}>
+              Data Engineer &amp; Data Scientist
             </p>
-            <p className="text-[#64748b] leading-relaxed mb-8 max-w-sm">
-              Building AI systems, data pipelines, and ML models — turning
-              complex data into tools people actually use.
+
+            {/* Bio */}
+            <p className="leading-relaxed mb-7 max-w-md text-[1.025rem]" style={{ color: "var(--text-2)" }}>
+              Building cutting-edge AI products for IoT devices @ AprilAire
             </p>
+
+            {/* CTA buttons */}
             <div className="flex flex-wrap gap-3">
               <a
                 href="#projects"
-                className="px-5 py-2.5 bg-[#a78bfa] text-[#0a0914] rounded font-semibold text-sm hover:bg-[#a78bfa]/90 transition-colors"
+                className="px-5 py-2.5 rounded-md text-sm font-medium text-white transition-colors"
+                style={{ background: "var(--accent)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#6e1425")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
               >
-                View Projects →
+                View Projects
               </a>
               <a
-                href="#contact"
-                className="px-5 py-2.5 border border-[#1d1a30] text-[#94a3b8] rounded font-semibold text-sm hover:border-[#a78bfa] hover:text-[#a78bfa] transition-colors"
+                href="/resume.pdf"
+                className="px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+                style={{ border: "1px solid var(--border-strong)", color: "var(--text-2)" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.color = "var(--accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border-strong)";
+                  e.currentTarget.style.color = "var(--text-2)";
+                }}
               >
-                Contact Me
+                Resume ↗
               </a>
             </div>
           </div>
 
-          {/* Right: terminal */}
-          <div className="font-mono text-sm">
-            <div className="bg-[#0e0c1f] border border-[#1d1a30] rounded-xl overflow-hidden shadow-2xl">
-              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#1d1a30]/50 border-b border-[#1d1a30]">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                <span className="ml-3 text-[#475569] text-xs">
-                  ~/portfolio — zsh
-                </span>
+          {/* Right: photo */}
+          <div
+            className="hidden md:flex justify-center items-start animate-fade-in"
+            style={{ animationDelay: "0.35s", opacity: 0 }}
+          >
+            <div className="relative">
+              {/* Offset frame */}
+              <div
+                className="absolute inset-0 translate-x-3.5 translate-y-3.5"
+                style={{
+                  border: "1.5px solid var(--accent-warm)",
+                  opacity: 0.28,
+                  borderRadius: "1rem",
+                }}
+              />
+              {/* Photo */}
+              <div className="relative overflow-hidden shadow-lg" style={{ width: 340, height: 453, borderRadius: "1rem" }}>
+                <Image
+                  src="/kalynn.jpg"
+                  alt="Kalynn Willis at UW-Madison graduation"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
               </div>
-
-              <div className="p-6 space-y-3 min-h-[200px]">
-                {LINES.slice(0, shown).map((line, i) => (
-                  <div key={i} className="space-y-1">
-                    <div className="flex gap-2">
-                      <span className="text-[#f472b6]">❯</span>
-                      <span className="text-[#e2e8f0]">{line.cmd}</span>
-                    </div>
-                    <div className="pl-5 text-[#a78bfa]">{line.out}</div>
-                  </div>
-                ))}
-                <div className="flex items-center gap-2">
-                  <span className="text-[#f472b6]">❯</span>
-                  <span className="inline-block w-2 h-4 bg-[#a78bfa] animate-blink" />
-                </div>
-              </div>
+              <p className="text-center text-[10px] font-mono tracking-widest uppercase mt-3" style={{ color: "var(--text-3)" }}>
+                UW–Madison, 2026
+              </p>
             </div>
-
-            <p className="text-center text-[#1d1a30] text-xs font-mono mt-3">
-              // data engineer · ml builder · stats nerd
-            </p>
           </div>
+
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#475569]">
-        <span className="font-mono text-xs">scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-[#475569] to-transparent" />
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
+        <span className="font-mono text-[10px] tracking-widest uppercase">scroll</span>
+        <div className="w-px h-6" style={{ background: "linear-gradient(to bottom, var(--border-strong), transparent)" }} />
       </div>
     </section>
   );

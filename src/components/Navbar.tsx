@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { href: "#about", label: "about" },
-  { href: "#skills", label: "skills" },
-  { href: "#projects", label: "projects" },
-  { href: "#experience", label: "experience" },
-  { href: "#contact", label: "contact" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -21,16 +21,29 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+      style={
         scrolled
-          ? "bg-[#0a0914]/95 backdrop-blur-sm border-b border-[#1d1a30]"
-          : ""
-      }`}
+          ? {
+              background: "rgba(253,240,242,0.97)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 1px 0 var(--border), 0 4px 24px rgba(45,30,34,0.06)",
+            }
+          : {}
+      }
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-mono font-bold text-lg tracking-wider">
-          <span className="text-[#a78bfa]">kw</span>
-          <span className="text-[#f472b6] animate-blink">_</span>
+        {/* Logo */}
+        <a
+          href="#"
+          className="text-xl"
+          style={{
+            fontFamily: "var(--font-dm-serif)",
+            fontStyle: "italic",
+            color: "var(--text)",
+          }}
+        >
+          kw.
         </a>
 
         {/* Desktop nav */}
@@ -39,46 +52,46 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-sm text-[#64748b] hover:text-[#a78bfa] transition-colors"
+              className="text-sm transition-colors"
+              style={{ color: "var(--text-2)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-2)")}
             >
-              ./{l.label}
+              {l.label}
             </a>
           ))}
           <a
             href="/resume.pdf"
-            className="font-mono text-sm border border-[#a78bfa] text-[#a78bfa] px-3 py-1.5 rounded hover:bg-[#a78bfa]/10 transition-colors"
+            className="text-sm px-3 py-1.5 rounded transition-colors"
+            style={{
+              border: "1px solid var(--border-strong)",
+              color: "var(--text-2)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--accent)";
+              e.currentTarget.style.color = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-strong)";
+              e.currentTarget.style.color = "var(--text-2)";
+            }}
           >
-            resume.pdf
+            Resume
           </a>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#64748b] hover:text-[#a78bfa] transition-colors"
+          className="md:hidden transition-colors"
+          style={{ color: "var(--text-2)" }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            width="22"
-            height="22"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -86,19 +99,30 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0e0c1f] border-t border-[#1d1a30] px-6 py-5 flex flex-col gap-5">
+        <div
+          className="md:hidden px-6 py-5 flex flex-col gap-5"
+          style={{
+            background: "var(--surface)",
+            borderTop: "1px solid var(--border)",
+          }}
+        >
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-sm text-[#64748b] hover:text-[#a78bfa] transition-colors"
+              className="text-sm transition-colors"
+              style={{ color: "var(--text-2)" }}
               onClick={() => setMenuOpen(false)}
             >
-              ./{l.label}
+              {l.label}
             </a>
           ))}
-          <a href="/resume.pdf" className="font-mono text-sm text-[#a78bfa]">
-            resume.pdf
+          <a
+            href="/resume.pdf"
+            className="text-sm"
+            style={{ color: "var(--accent)" }}
+          >
+            Resume ↗
           </a>
         </div>
       )}
