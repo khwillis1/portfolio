@@ -63,3 +63,37 @@ body {
   animation-delay: 0.2s;
   opacity: 0;
 }
+
+@keyframes dnascroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-80px); }
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.2; r: 4; }
+  50% { opacity: 0.7; r: 5.5; }
+}
+
+@keyframes lineFlow {
+  0% { stroke-dashoffset: 120; opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes ripple {
+  0% { r: 5; opacity: 0.6; }
+  100% { r: 22; opacity: 0; }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.visible {
+  animation: revealUp 0.6s ease-out forwards;
+}

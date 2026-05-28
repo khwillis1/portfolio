@@ -7,6 +7,23 @@ const LINES = [
   { cmd: "echo $STACK", out: "Python · SQL · AWS · PyTorch · FastAPI" },
 ];
 
+// IoT network node positions (% of SVG viewBox 200x300)
+const NODES = [
+  { x: 30,  y: 40  },
+  { x: 130, y: 25  },
+  { x: 170, y: 100 },
+  { x: 140, y: 200 },
+  { x: 55,  y: 240 },
+  { x: 20,  y: 155 },
+  { x: 100, y: 130 },
+];
+
+const EDGES = [
+  [0, 1], [1, 2], [2, 3], [3, 4],
+  [4, 5], [5, 0], [6, 0], [6, 2],
+  [6, 3], [6, 5],
+];
+
 export default function Hero() {
   const [shown, setShown] = useState(0);
 
@@ -30,6 +47,58 @@ export default function Hero() {
           backgroundSize: "64px 64px",
         }}
       />
+
+      {/* IoT network nodes — top right decoration */}
+      <div className="absolute top-16 right-0 w-[220px] h-[300px] hidden lg:block opacity-30 pointer-events-none">
+        <svg viewBox="0 0 200 300" width="220" height="300">
+          <defs>
+            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#a78bfa" stopOpacity="1" />
+              <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Connection lines */}
+          {EDGES.map(([a, b], i) => (
+            <line
+              key={i}
+              x1={NODES[a].x} y1={NODES[a].y}
+              x2={NODES[b].x} y2={NODES[b].y}
+              stroke="#a78bfa"
+              strokeWidth="1"
+              strokeDasharray="120"
+              opacity="0.5"
+              style={{
+                animation: `lineFlow ${2.5 + (i % 4) * 0.7}s ease-in-out ${i * 0.4}s infinite`,
+              }}
+            />
+          ))}
+
+          {/* Nodes */}
+          {NODES.map((n, i) => (
+            <g key={i}>
+              {/* Ripple on hub node */}
+              {i === 6 && (
+                <circle
+                  cx={n.x} cy={n.y} r="5"
+                  fill="none"
+                  stroke="#f472b6"
+                  strokeWidth="1"
+                  style={{ animation: `ripple 2.5s ease-out 0s infinite` }}
+                />
+              )}
+              <circle
+                cx={n.x} cy={n.y} r="4"
+                fill="#a78bfa"
+                style={{
+                  animation: `nodePulse ${1.8 + (i % 3) * 0.6}s ease-in-out ${i * 0.3}s infinite`,
+                }}
+              />
+            </g>
+          ))}
+        </svg>
+      </div>
+
       {/* Glow orb */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#a78bfa]/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -72,7 +141,6 @@ export default function Hero() {
           {/* Right: terminal */}
           <div className="font-mono text-sm">
             <div className="bg-[#0e0c1f] border border-[#1d1a30] rounded-xl overflow-hidden shadow-2xl">
-              {/* Terminal chrome */}
               <div className="flex items-center gap-1.5 px-4 py-3 bg-[#1d1a30]/50 border-b border-[#1d1a30]">
                 <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
                 <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
@@ -82,7 +150,6 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Terminal content */}
               <div className="p-6 space-y-3 min-h-[200px]">
                 {LINES.slice(0, shown).map((line, i) => (
                   <div key={i} className="space-y-1">
@@ -100,7 +167,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Decorative comment */}
             <p className="text-center text-[#1d1a30] text-xs font-mono mt-3">
               // data engineer · ml builder · stats nerd
             </p>

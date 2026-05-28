@@ -1,3 +1,5 @@
+import DNAHelix from "./DNAHelix";
+
 const experiences = [
   {
     title: "Data Engineer Co-op",
@@ -46,7 +48,13 @@ export default function Experience() {
           <div className="flex-1 h-px bg-[#1d1a30] ml-3" />
         </div>
 
-        <div className="relative pl-6">
+        <div className="flex gap-8">
+          {/* DNA helix decoration */}
+          <div className="hidden lg:block shrink-0 mt-2" style={{ height: 600 }}>
+            <DNAHelix className="h-full" />
+          </div>
+
+          <div className="flex-1 relative pl-6">
           {/* Vertical timeline line */}
           <div className="absolute left-0 top-2 bottom-2 w-px bg-[#1d1a30]" />
 
@@ -94,6 +102,7 @@ export default function Experience() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>
