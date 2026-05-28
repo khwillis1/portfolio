@@ -40,35 +40,35 @@ export default function Contact() {
     <section id="contact" className="py-28 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <span className="font-mono text-[#22d3ee] text-sm">05.</span>
+          <span className="font-mono text-[#a78bfa] text-sm">05.</span>
           <h2 className="text-3xl font-bold text-[#e2e8f0]">Contact</h2>
         </div>
 
-        <p className="font-mono text-[#22d3ee] text-sm mb-4">
+        <p className="font-mono text-[#a78bfa] text-sm mb-4">
           // let&apos;s build something together
         </p>
 
         <p className="text-[#94a3b8] leading-relaxed mb-10 max-w-lg mx-auto">
-          I&apos;m open to new opportunities, collaborations, and conversations about
-          data. Whether you have a question or just want to say hi, my inbox is
-          always open.
+          I&apos;m open to new opportunities, collaborations, and conversations
+          about data and AI. Whether you have a question or just want to say hi,
+          my inbox is always open.
         </p>
 
         <a
-          href="mailto:your@email.com"
-          className="inline-block px-8 py-3 border border-[#22d3ee] text-[#22d3ee] rounded font-mono text-sm hover:bg-[#22d3ee]/10 transition-colors mb-12"
+          href="mailto:kalynnhopewillis@gmail.com"
+          className="inline-block px-8 py-3 border border-[#a78bfa] text-[#a78bfa] rounded font-mono text-sm hover:bg-[#a78bfa]/10 transition-colors mb-12"
         >
           Say Hello →
         </a>
 
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-6 flex-wrap">
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#64748b] hover:text-[#22d3ee] transition-colors font-mono text-sm"
+              className="flex items-center gap-2 text-[#64748b] hover:text-[#a78bfa] transition-colors font-mono text-sm"
               aria-label={s.label}
             >
               {s.icon}
@@ -76,8 +76,8 @@ export default function Contact() {
             </a>
           ))}
           <a
-            href="mailto:your@email.com"
-            className="flex items-center gap-2 text-[#64748b] hover:text-[#22d3ee] transition-colors font-mono text-sm"
+            href="mailto:kalynnhopewillis@gmail.com"
+            className="flex items-center gap-2 text-[#64748b] hover:text-[#a78bfa] transition-colors font-mono text-sm"
           >
             <EmailIcon />
             <span>Email</span>

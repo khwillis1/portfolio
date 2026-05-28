@@ -23,14 +23,14 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0e1a]/95 backdrop-blur-sm border-b border-[#1e293b]"
+          ? "bg-[#0a0914]/95 backdrop-blur-sm border-b border-[#1d1a30]"
           : ""
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="font-mono font-bold text-lg tracking-wider">
-          <span className="text-[#22d3ee]">kw</span>
-          <span className="text-[#4ade80] animate-blink">_</span>
+          <span className="text-[#a78bfa]">kw</span>
+          <span className="text-[#f472b6] animate-blink">_</span>
         </a>
 
         {/* Desktop nav */}
@@ -39,14 +39,14 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-sm text-[#64748b] hover:text-[#22d3ee] transition-colors"
+              className="font-mono text-sm text-[#64748b] hover:text-[#a78bfa] transition-colors"
             >
               ./{l.label}
             </a>
           ))}
           <a
             href="/resume.pdf"
-            className="font-mono text-sm border border-[#22d3ee] text-[#22d3ee] px-3 py-1.5 rounded hover:bg-[#22d3ee]/10 transition-colors"
+            className="font-mono text-sm border border-[#a78bfa] text-[#a78bfa] px-3 py-1.5 rounded hover:bg-[#a78bfa]/10 transition-colors"
           >
             resume.pdf
           </a>
@@ -54,7 +54,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#64748b] hover:text-[#22d3ee] transition-colors"
+          className="md:hidden text-[#64748b] hover:text-[#a78bfa] transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -86,18 +86,18 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0f1729] border-t border-[#1e293b] px-6 py-5 flex flex-col gap-5">
+        <div className="md:hidden bg-[#0e0c1f] border-t border-[#1d1a30] px-6 py-5 flex flex-col gap-5">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-sm text-[#64748b] hover:text-[#22d3ee] transition-colors"
+              className="font-mono text-sm text-[#64748b] hover:text-[#a78bfa] transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               ./{l.label}
             </a>
           ))}
-          <a href="/resume.pdf" className="font-mono text-sm text-[#22d3ee]">
+          <a href="/resume.pdf" className="font-mono text-sm text-[#a78bfa]">
             resume.pdf
           </a>
         </div>

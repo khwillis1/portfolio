@@ -1,25 +1,25 @@
 const projects = [
   {
-    name: "DataFlow Orchestrator",
+    name: "Merv — AI Health Assistant",
     description:
-      "Custom ETL pipeline orchestration system built with Apache Airflow and dbt. Handles 50M+ records daily with automated data quality checks and alerting.",
-    tags: ["Python", "Airflow", "dbt", "Snowflake", "Docker"],
+      "Customer-facing AI assistant at AprilAire delivering personalized healthy-air product recommendations. Combines a conversational LLM interface with an XGBoost model predicting optimal product configurations based on home characteristics.",
+    tags: ["Python", "XGBoost", "LLM", "AWS", "FastAPI"],
     github: "https://github.com/kalynnwillis",
     live: null,
   },
   {
-    name: "Real-time Analytics Platform",
+    name: "RAG Research Chatbot",
     description:
-      "Streaming data pipeline using Kafka and Spark Streaming for real-time event processing. Powers a live dashboard with sub-second latency.",
-    tags: ["Kafka", "Spark", "Python", "BigQuery", "GCP"],
+      "Natural-language query interface for UW Biochemistry phenotype data. Built with FastAPI, vector embeddings, and local/remote LLMs. Integrated Ensembl, JAX, GTEx, and IMPC APIs for live genetic annotations.",
+    tags: ["FastAPI", "Python", "RAG", "Docker", "HTCondor"],
     github: "https://github.com/kalynnwillis",
     live: null,
   },
   {
-    name: "ML Feature Store",
+    name: "COVID-19 Vaccine Analysis",
     description:
-      "Centralized feature store for ML models enabling feature reuse and reducing data duplication. Backed by Redis and Parquet on S3.",
-    tags: ["Python", "Feast", "Redis", "S3", "Terraform"],
+      "Statistical analysis of CDC COVID-19 surveillance data (72% U.S. population coverage) to evaluate Moderna vs. Pfizer death rates. Applied z-tests, confidence intervals, and incidence-rate trend analysis in R and Python.",
+    tags: ["R", "Python", "Statistics", "CDC Data", "Pandas"],
     github: "https://github.com/kalynnwillis",
     live: null,
   },
@@ -38,25 +38,25 @@ export default function Projects() {
     <section id="projects" className="py-28 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-14">
-          <span className="font-mono text-[#22d3ee] text-sm">03.</span>
+          <span className="font-mono text-[#a78bfa] text-sm">03.</span>
           <h2 className="text-3xl font-bold text-[#e2e8f0]">Projects</h2>
-          <div className="flex-1 h-px bg-[#1e293b] ml-3" />
+          <div className="flex-1 h-px bg-[#1d1a30] ml-3" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-5">
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group bg-[#0f1729] border border-[#1e293b] rounded-xl p-6 flex flex-col hover:border-[#22d3ee]/40 hover:-translate-y-1 transition-all duration-200"
+              className="group bg-[#0e0c1f] border border-[#1d1a30] rounded-xl p-6 flex flex-col hover:border-[#a78bfa]/40 hover:-translate-y-1 transition-all duration-200"
             >
               <div className="flex items-center justify-between mb-5">
-                <span className="text-[#22d3ee] text-2xl">⬡</span>
+                <span className="text-[#a78bfa] text-2xl">⬡</span>
                 <div className="flex gap-3">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+                    className="text-[#475569] hover:text-[#a78bfa] transition-colors"
                     aria-label="GitHub repository"
                   >
                     <GitHubIcon />
@@ -66,7 +66,7 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#475569] hover:text-[#22d3ee] transition-colors"
+                      className="text-[#475569] hover:text-[#a78bfa] transition-colors"
                       aria-label="Live site"
                     >
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,7 +88,7 @@ export default function Projects() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-xs text-[#22d3ee]/70 px-2 py-0.5 bg-[#22d3ee]/5 border border-[#22d3ee]/10 rounded"
+                    className="font-mono text-xs text-[#a78bfa]/70 px-2 py-0.5 bg-[#a78bfa]/5 border border-[#a78bfa]/10 rounded"
                   >
                     {tag}
                   </span>
@@ -103,7 +103,7 @@ export default function Projects() {
             href="https://github.com/kalynnwillis"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-[#22d3ee] hover:text-[#4ade80] transition-colors"
+            className="font-mono text-sm text-[#a78bfa] hover:text-[#f472b6] transition-colors"
           >
             view more on GitHub →
           </a>
