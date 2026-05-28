@@ -2,7 +2,7 @@ const stats = [
   { value: "3.92", label: "GPA" },
   { value: "5×", label: "Dean's List" },
   { value: "3+", label: "Industry Roles" },
-  { value: "2026", label: "Graduation" },
+  { value: "B.S.", label: "Stats & Data Science" },
 ];
 
 const currentStack = [
@@ -32,11 +32,11 @@ export default function About() {
             <p>
               Hi! I&apos;m{" "}
               <span className="text-[#e2e8f0] font-medium">Kalynn Willis</span>,
-              a Statistics & Data Science student at{" "}
+              a Statistics & Data Science graduate of{" "}
               <span className="text-[#e2e8f0] font-medium">UW-Madison</span>{" "}
-              (graduating August 2026) with a 3.92 GPA and five Dean&apos;s List
-              semesters. I build things at the intersection of data engineering,
-              machine learning, and AI.
+              with a 3.92 GPA and five Dean&apos;s List semesters. I build
+              things at the intersection of data engineering, machine learning,
+              and AI.
             </p>
             <p>
               Currently a{" "}

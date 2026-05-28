@@ -30,7 +30,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/kalynnwillis",
+    href: "https://www.linkedin.com/in/kalynn-willis-960266253/",
     icon: <LinkedInIcon />,
   },
 ];
