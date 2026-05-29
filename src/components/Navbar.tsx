@@ -26,7 +26,7 @@ export default function Navbar() {
       style={
         scrolled
           ? {
-              background: "rgba(249,244,240,0.97)",
+              background: "rgba(251,238,241,0.97)",
               backdropFilter: "blur(12px)",
               boxShadow: "0 1px 0 var(--border), 0 4px 24px rgba(36,27,30,0.05)",
             }
