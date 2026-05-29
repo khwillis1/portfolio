@@ -2,7 +2,6 @@
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
-import Hills from "./Hills";
 
 const EMAIL = "kalynnhopewillis@gmail.com";
 
@@ -38,8 +37,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden py-20 px-6">
-      <Hills />
+    <section id="contact" className="relative py-20 px-6">
       <div className="relative z-10 max-w-2xl mx-auto text-center">
         <Reveal>
           <SectionHeader

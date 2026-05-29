@@ -1,7 +1,6 @@
 "use client";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
-import Hills from "./Hills";
 
 const categories = [
   {
@@ -26,10 +25,9 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden py-20 px-6"
+      className="relative py-20 px-6"
       style={{ background: "var(--bg-tinted)" }}
     >
-      <Hills />
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader number="04" label="SKILLS" title="Skills" />

@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import ProjectDrawer from "./ProjectDrawer";
-import Hills from "./Hills";
 import { projects } from "./projects-data";
 
 function ReadMore() {
@@ -43,8 +42,7 @@ export default function Projects() {
   const featured = projects[0];
 
   return (
-    <section id="projects" className="relative overflow-hidden py-20 px-6">
-      <Hills />
+    <section id="projects" className="relative py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader number="03" label="SELECTED WORK" title="Selected Work" />

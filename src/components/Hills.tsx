@@ -1,14 +1,15 @@
 /**
- * Animated rolling hills, pinned to the bottom of a section. Two seamless
- * tiles scroll horizontally for a continuous "rolling" effect. Decorative,
- * very low opacity, behind content. Respects prefers-reduced-motion (global).
+ * Animated rolling hills, fixed to the bottom of the viewport so they sit
+ * behind all content and roll continuously as you scroll — never lingering
+ * "above." Two seamless tiles loop horizontally. Decorative, low opacity,
+ * pointer-events-none. Sits above section backgrounds (z-[1]) but below
+ * content (which is z-10). Respects prefers-reduced-motion (global guard).
  */
-export default function Hills({ height = "160px" }: { height?: string }) {
+export default function Hills() {
   return (
     <div
       aria-hidden="true"
-      className="hills pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden"
-      style={{ height }}
+      className="fixed inset-x-0 bottom-0 z-[1] h-36 overflow-hidden pointer-events-none"
     >
       <div className="hills-track flex h-full w-[200%]">
         {[0, 1].map((i) => (

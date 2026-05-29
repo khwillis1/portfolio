@@ -7,10 +7,12 @@ import Experience from "@/components/Experience";
 import Interests from "@/components/Interests";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Hills from "@/components/Hills";
 
 export default function Home() {
   return (
     <>
+      <Hills />
       <Navbar />
       <main>
         <Hero />
