@@ -10,15 +10,19 @@ const categories = [
   },
   {
     title: "AI & Machine Learning",
-    skills: ["PyTorch", "XGBoost", "scikit-learn", "OpenAI", "Ollama", "FastAPI", "RAG", "Vector Embeddings", "LLMs"],
+    skills: ["LLMs", "RAG", "Vector Embeddings", "MCP", "Bedrock AgentCore", "PyTorch", "XGBoost", "scikit-learn", "OpenAI", "Ollama", "FastAPI"],
   },
   {
-    title: "Data & Cloud",
-    skills: ["AWS", "Docker", "DuckDB", "SQLite", "ETL Pipelines", "HTCondor", "Git", "CI/CD"],
+    title: "AWS & Cloud",
+    skills: ["AWS", "Lambda", "Step Functions", "Glue", "Athena", "S3", "AWS CLI", "REST APIs", "CI/CD", "Docker"],
   },
   {
-    title: "Visualization & Web",
-    skills: ["RShiny", "Next.js", "TailwindCSS", "TypeScript", "Cursor"],
+    title: "Data & Databases",
+    skills: ["PostgreSQL", "DuckDB", "SQLite", "ETL Pipelines", "Excel", "HTCondor"],
+  },
+  {
+    title: "Tools & Web",
+    skills: ["Git", "Jira", "Grafana", "RShiny", "Next.js", "TailwindCSS", "Cursor"],
   },
 ];
 
