@@ -37,7 +37,7 @@ export default function Interests() {
   return (
     <section
       id="interests"
-      className="relative py-20 px-6"
+      className="relative py-14 md:py-20 px-6"
       style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto">

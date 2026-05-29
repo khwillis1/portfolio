@@ -25,7 +25,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 px-6"
+      className="relative py-14 md:py-20 px-6"
       style={{ background: "var(--bg-tinted)" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto">

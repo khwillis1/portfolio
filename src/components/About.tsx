@@ -16,7 +16,7 @@ const currentStack = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 px-6">
+    <section id="about" className="relative py-14 md:py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader number="01" label="ABOUT" title="About" />

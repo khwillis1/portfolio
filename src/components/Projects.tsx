@@ -42,7 +42,7 @@ export default function Projects() {
   const featured = projects[0];
 
   return (
-    <section id="projects" className="relative py-20 px-6">
+    <section id="projects" className="relative py-14 md:py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader number="03" label="SELECTED WORK" title="Selected Work" />

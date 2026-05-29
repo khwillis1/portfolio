@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import SocialLinks from "./SocialLinks";
+import Hills from "./Hills";
 
 export default function Hero() {
   return (
@@ -149,6 +150,8 @@ export default function Hero() {
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
       </div>
+
+      <Hills />
     </section>
   );
 }
