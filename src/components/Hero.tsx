@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden"
+      className="min-h-screen flex items-start px-6 pt-20 pb-16 md:pt-28 md:pb-20 relative overflow-hidden"
     >
       {/* Barely-there warm radial background detail */}
       <div
@@ -18,7 +18,7 @@ export default function Hero() {
       />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="grid md:grid-cols-[1fr_380px] gap-14 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-[1fr_380px] gap-6 md:gap-10 lg:gap-20 items-center">
 
           {/* Left: text content */}
           <div className="animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
@@ -37,7 +37,7 @@ export default function Hero() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontStyle: "italic",
-                fontSize: "clamp(3.6rem, 8.5vw, 6rem)",
+                fontSize: "clamp(4rem, 11vw, 6.5rem)",
                 color: "var(--text)",
               }}
             >
@@ -52,7 +52,7 @@ export default function Hero() {
             </p>
 
             {/* Bio */}
-            <p className="leading-relaxed mb-7 max-w-md text-[1.025rem]" style={{ color: "var(--text-2)" }}>
+            <p className="leading-relaxed mb-7 max-w-md text-sm" style={{ color: "var(--text-2)" }}>
               I build AI products and the data pipelines behind AprilAire&apos;s connected
               air-quality devices — with a background in biology and genetics research.
             </p>
@@ -93,7 +93,7 @@ export default function Hero() {
             style={{ animationDelay: "0.35s", opacity: 0 }}
           >
             <div className="flex flex-col items-center">
-              <div className="relative w-full max-w-[260px] md:max-w-[340px]">
+              <div className="relative w-[185px] md:w-[340px] max-w-full">
                 {/* Subtle offset accent frame */}
                 <div
                   className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
@@ -131,8 +131,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
+      {/* Scroll indicator (desktop only — collides with content on short mobile screens) */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
         <span className="font-mono text-[10px] tracking-widest uppercase">scroll</span>
         <div className="w-px h-6" style={{ background: "linear-gradient(to bottom, var(--border-strong), transparent)" }} />
       </div>
