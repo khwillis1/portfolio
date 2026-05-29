@@ -59,14 +59,27 @@ export const projects: Project[] = [
   },
   {
     num: "03",
-    name: "COVID-19 Vaccine Analysis",
+    name: "AprilAire MCP Servers",
     blurb:
-      "A statistical comparison of Moderna vs. Pfizer death rates using CDC COVID-19 surveillance data covering ~72% of the U.S. population.",
-    tags: ["R", "Python", "Statistics", "CDC Data", "Pandas"],
+      "Internal and external MCP servers that connect LLM agents to AprilAire's world — letting customers control healthy-air devices by talking to them, and letting engineers query LabVIEW and AWS datasets in plain English instead of SQL.",
+    role: "Designed & built",
+    tags: ["Python", "MCP", "LLM", "AWS", "IoT"],
     sections: [
       {
-        heading: "Overview",
-        body: "Statistical analysis of CDC COVID-19 surveillance data to evaluate Moderna vs. Pfizer death rates, applying z-tests, confidence intervals, and incidence-rate trend analysis in R and Python.",
+        heading: "The problem",
+        body: "Two gaps, one piece of infrastructure. On the customer side, controlling healthy-air devices still meant navigating menus and settings — when people would rather just say “set my thermostat to 68” or ask how their home is doing. Internally, engineering and lab teams were stuck with fragmented data systems that took technical know-how to query, especially across LabVIEW-generated AWS datasets and device telemetry databases.",
+      },
+      {
+        heading: "How it works",
+        body: "I designed and built an MCP (Model Context Protocol) server that connects LLM-based agents directly to AprilAire's cloud APIs and internal data systems. Externally, it lets an AI assistant act like a real AprilAire user — interacting with thermostats and healthy-air devices through structured tooling and authenticated API access. Internally, the same infrastructure lets employees query databases conversationally, investigate trends, and pull experimental data from LabVIEW and AWS without writing SQL or digging through dashboards. I also built custom tools that let the agent retrieve telemetry, analyze trends, and work with structured device and environmental data in real time.",
+      },
+      {
+        heading: "Where it's going",
+        body: "I'm expanding it into a more stateful assistant that remembers household preferences, environmental patterns, and historical device behavior. The goal is an AI-native healthy-home system that manages air quality proactively instead of just responding to commands — for example, using weather forecasts and outdoor humidity to adjust humidification before the home gets uncomfortable. That shifts the experience from reactive smart-home control toward predictive environmental automation.",
+      },
+      {
+        heading: "Why it matters",
+        body: "For customers, healthy-air devices become something you talk to instead of an app you tab through. For engineers, it collapses the gap between a question and an answer about operational data. More broadly, it's a look at how MCP can bridge LLMs and real-world IoT — turning connected devices and enterprise databases into systems intelligent agents can actually reason about and act on.",
       },
     ],
   },
