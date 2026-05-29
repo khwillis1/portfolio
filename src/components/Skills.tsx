@@ -1,5 +1,6 @@
 "use client";
-import ScrollReveal from "./ScrollReveal";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const categories = [
   {
@@ -28,31 +29,13 @@ export default function Skills() {
       style={{ background: "var(--bg-tinted)" }}
     >
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-baseline gap-4 mb-12">
-            <span
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "var(--text-3)" }}
-            >
-              04
-            </span>
-            <h2
-              className="text-3xl"
-              style={{
-                fontFamily: "var(--font-dm-serif)",
-                fontStyle: "italic",
-                color: "var(--text)",
-              }}
-            >
-              Skills
-            </h2>
-            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader number="04" label="SKILLS" title="Skills" />
+        </Reveal>
 
         <div style={{ borderTop: "1px solid var(--border-strong)" }}>
           {categories.map((cat, i) => (
-            <ScrollReveal key={cat.title} delay={i * 60}>
+            <Reveal key={cat.title} delay={i * 60}>
               <div
                 className="py-7 grid md:grid-cols-[180px_1fr] gap-x-10 gap-y-4 items-start"
                 style={{ borderBottom: "1px solid var(--border)" }}
@@ -90,7 +73,7 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
-            </ScrollReveal>
+            </Reveal>
           ))}
         </div>
       </div>
