@@ -29,21 +29,24 @@ export default function About() {
               <p>
                 I&apos;m{" "}
                 <span style={{ color: "var(--text)" }} className="font-medium">Kalynn Willis</span>, a
-                Statistics &amp; Data Science grad from{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">UW-Madison</span>{" "}
-                who took the long way in. I started in{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">molecular biology and genetics</span>
-                {" "}— building RAG chatbots for UW&apos;s Biochemistry department and ML models
-                for drug discovery at Arrowhead Pharmaceuticals. It&apos;s an unconventional path
-                into data science, but it shaped how I work: I&apos;d take messy, real-world data
-                over a clean textbook dataset any day.
+                Statistics &amp; Data Science graduate from{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">UW–Madison</span>{" "}
+                with a background that started in molecular biology and genetics before pulling me
+                into data science and engineering.
               </p>
               <p>
-                Now I&apos;m a{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">Data Engineer Co-op at AprilAire</span>,
-                {" "}building Merv — an AI assistant that helps people pick the right air-quality
-                products for their home — along with the MCP servers and ETL pipelines that turn
-                our IoT device data into real-time decisions.
+                At UW&apos;s Biochemistry department, I built RAG-based research chatbots and tools
+                for querying large genetic datasets. At Arrowhead Pharmaceuticals, I worked on
+                machine learning workflows for drug discovery. Now at AprilAire, I&apos;m building
+                Merv — an AI assistant for personalized healthy-air recommendations — along with
+                MCP servers, ETL pipelines, and IoT infrastructure that connect device data, cloud
+                systems, and conversational AI.
+              </p>
+              <p>
+                I like building systems that sit between raw data and actual decision-making:
+                retrieval systems, internal tools, APIs, data pipelines, and AI interfaces that
+                people can interact with directly. Most of my work ends up somewhere between
+                software engineering, data engineering, and applied machine learning.
               </p>
 
               <div className="pt-2">
