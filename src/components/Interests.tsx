@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
+import Hills from "./Hills";
 
 const interests = [
   {
@@ -37,10 +38,11 @@ export default function Interests() {
   return (
     <section
       id="interests"
-      className="py-20 px-6"
+      className="relative overflow-hidden py-20 px-6"
       style={{ borderTop: "1px solid var(--border)" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <Hills />
+      <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader
             number="05"
