@@ -89,6 +89,14 @@ body {
   animation: revealUp 0.55s ease-out forwards;
 }
 
+/* Interest photo hover zoom */
+.interest-photo-wrap img {
+  transition: transform 0.35s ease;
+}
+.interest-photo-wrap:hover img {
+  transform: scale(1.02);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

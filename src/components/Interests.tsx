@@ -1,5 +1,6 @@
-import ScrollReveal from "./ScrollReveal";
 import Image from "next/image";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const interests = [
   {
@@ -39,49 +40,38 @@ export default function Interests() {
       style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-baseline gap-4 mb-10">
-            <span
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "var(--text-3)" }}
-            >
-              05
-            </span>
-            <h2
-              className="text-3xl"
-              style={{
-                fontFamily: "var(--font-dm-serif)",
-                fontStyle: "italic",
-                color: "var(--text)",
-              }}
-            >
-              Beyond the Code
-            </h2>
-            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader
+            number="05"
+            label="BEYOND THE CODE"
+            title="Beyond the Code"
+          />
+        </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {interests.map((item, i) => (
-            <ScrollReveal key={item.label} delay={i * 70}>
+            <Reveal key={item.label} delay={i * 70}>
               <div className="flex flex-col gap-3">
-                {/* Label */}
+                {/* Label above the photo */}
                 <h3
                   className="text-lg"
                   style={{
-                    fontFamily: "var(--font-dm-serif)",
-                    fontStyle: "italic",
+                    fontFamily: "var(--font-display)",
                     color: "var(--text)",
                   }}
                 >
                   {item.label}
                 </h3>
 
-                {/* Photo or text */}
+                {/* Photo container — hover zoom via .interest-photo-wrap CSS class */}
                 {item.image ? (
                   <div
-                    className="relative overflow-hidden"
-                    style={{ height: item.height ?? 220, borderRadius: "0.75rem" }}
+                    className="interest-photo-wrap relative overflow-hidden"
+                    style={{
+                      height: 240,
+                      borderRadius: "var(--radius)",
+                      boxShadow: "var(--shadow-md)",
+                    }}
                   >
                     <Image
                       src={item.image}
@@ -99,7 +89,7 @@ export default function Interests() {
                   </p>
                 )}
               </div>
-            </ScrollReveal>
+            </Reveal>
           ))}
         </div>
       </div>

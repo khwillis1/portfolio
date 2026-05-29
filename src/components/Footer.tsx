@@ -6,12 +6,8 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
         <p
-          className="text-sm"
-          style={{
-            fontFamily: "var(--font-dm-serif)",
-            fontStyle: "italic",
-            color: "var(--text-3)",
-          }}
+          className="font-mono text-xs"
+          style={{ color: "var(--text-3)" }}
         >
           Kalynn Willis © {new Date().getFullYear()}
         </p>
