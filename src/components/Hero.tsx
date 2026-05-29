@@ -87,38 +87,40 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: photo */}
+          {/* Right: photo (shown on all sizes; sized responsively) */}
           <div
-            className="hidden md:flex justify-center items-start animate-fade-in"
+            className="flex justify-center md:items-start animate-fade-in"
             style={{ animationDelay: "0.35s", opacity: 0 }}
           >
-            <div className="relative">
-              {/* Subtle offset accent frame */}
-              <div
-                className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
-                style={{
-                  border: "1px solid var(--accent)",
-                  opacity: 0.18,
-                  borderRadius: "var(--radius)",
-                }}
-              />
-              {/* Photo with soft depth shadow */}
-              <div
-                className="relative overflow-hidden"
-                style={{
-                  width: 340,
-                  height: 453,
-                  borderRadius: "var(--radius)",
-                  boxShadow: "var(--shadow-lg)",
-                }}
-              >
-                <Image
-                  src="/kalynn.jpg"
-                  alt="Kalynn Willis at UW-Madison graduation"
-                  fill
-                  className="object-cover object-top"
-                  priority
+            <div className="flex flex-col items-center">
+              <div className="relative w-full max-w-[260px] md:max-w-[340px]">
+                {/* Subtle offset accent frame */}
+                <div
+                  className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
+                  style={{
+                    border: "1px solid var(--accent)",
+                    opacity: 0.18,
+                    borderRadius: "var(--radius)",
+                  }}
                 />
+                {/* Photo with soft depth shadow */}
+                <div
+                  className="relative overflow-hidden w-full"
+                  style={{
+                    aspectRatio: "340 / 453",
+                    borderRadius: "var(--radius)",
+                    boxShadow: "var(--shadow-lg)",
+                  }}
+                >
+                  <Image
+                    src="/kalynn.jpg"
+                    alt="Kalynn Willis at UW-Madison graduation"
+                    fill
+                    sizes="(max-width: 768px) 80vw, 340px"
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
               </div>
               <p className="text-center text-[10px] font-mono tracking-widest uppercase mt-3" style={{ color: "var(--text-3)" }}>
                 UW–Madison, 2026
