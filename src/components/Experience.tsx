@@ -39,11 +39,11 @@ const experiences = [
     icon: <IoTIcon />,
     period: "Jan 2026 – Present",
     bullets: [
-      "Conceived and built Merv, a customer-facing AI assistant that pairs a conversational LLM with an XGBoost model to recommend the right air-quality products for a home — now rolling out across the AprilAire web and mobile apps.",
-      "Built an MCP server that lets thermostats and air-quality devices adjust themselves from weather forecasts and live sensor data.",
-      "Set up overnight job monitoring that surfaces pipeline failures in minutes instead of hours, plus AWS ETL pipelines that move device telemetry into the warehouse for analytics and ML.",
+      "Conceived and built Merv, an AI healthy-air assistant that recommends personalized HVAC and air-quality products through conversational interactions — currently in development, to be rolled out across AprilAire's web and mobile platforms.",
+      "Built MCP servers that connect LLM agents to thermostats, indoor air systems, and cloud APIs, enabling conversational device control and predictive automation based on weather forecasts and live sensor data.",
+      "Developed AWS ETL pipelines and monitoring infrastructure for ingesting IoT telemetry, surfacing pipeline failures quickly, and supporting downstream analytics and ML workflows.",
     ],
-    tags: ["Python", "AWS", "XGBoost", "LLM", "ETL", "MCP", "IoT"],
+    tags: ["Python", "AWS", "XGBoost", "MCP", "FastAPI", "IoT"],
   },
   {
     title: "Data Science Intern",
@@ -51,22 +51,23 @@ const experiences = [
     icon: <MoleculeIcon />,
     period: "May 2025 – Aug 2025",
     bullets: [
-      "Built gradient-boosting models with the AI/ML team to predict molecular and genetic properties and help prioritize drug-discovery candidates.",
-      "Automated the ETL and CI/CD that loads large experiment datasets into the research database, halving manual prep and making results reproducible.",
+      "Worked with the AI/ML team to build gradient-boosting models that predicted molecular and genetic properties for drug-discovery prioritization.",
+      "Automated ETL and CI/CD workflows for large experimental datasets, improving reproducibility and reducing manual preprocessing across research pipelines.",
+      "Built tooling for managing and validating biological data used in downstream modeling and analysis.",
     ],
-    tags: ["Python", "Pandas", "scikit-learn", "ETL", "CI/CD", "Bioinformatics"],
+    tags: ["Python", "scikit-learn", "Pandas", "ETL", "CI/CD", "Bioinformatics"],
   },
   {
     title: "Data Science Undergraduate Researcher",
-    company: "UW-Madison Department of Biochemistry",
+    company: "UW–Madison Department of Biochemistry",
     icon: <DNAIcon />,
     period: "Oct 2024 – Dec 2025",
     bullets: [
-      "Led a RAG chatbot that lets biologists query phenotype data in plain English, no SQL — backed by FastAPI, vector embeddings, and local/remote LLMs.",
-      "Wired it to live genetic databases (Ensembl, JAX, GTEx, IMPC) so annotations stay current, and built RShiny and Next.js dashboards for exploring QTL peaks and gene annotations.",
-      "Queried billions of genetic records with DuckDB and SQLite, containerized with Docker + HTCondor for reproducible distributed runs.",
+      "Proposed and built a RAG-based research chatbot that lets biologists query QTL and phenotype datasets in natural language instead of writing SQL or custom scripts.",
+      "Integrated live genomic resources including Ensembl, GTEx, IMPC, and JAX while building interactive dashboards for QTL exploration and gene annotation analysis.",
+      "Engineered distributed genomics workflows using DuckDB, Docker, HTCondor, and vector retrieval pipelines to support large-scale biological data analysis.",
     ],
-    tags: ["Python", "FastAPI", "RAG", "RShiny", "Next.js", "DuckDB", "Docker", "HTCondor"],
+    tags: ["Python", "FastAPI", "RAG", "DuckDB", "Docker", "HTCondor", "RShiny"],
   },
 ];
 
