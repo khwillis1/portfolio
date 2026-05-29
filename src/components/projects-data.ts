@@ -39,13 +39,21 @@ export const projects: Project[] = [
     num: "02",
     name: "RAG Research Chatbot",
     blurb:
-      "A natural-language interface over UW Biochemistry's phenotype data, so biologists can ask questions in plain English instead of writing SQL.",
-    role: "Lead developer",
-    tags: ["FastAPI", "Python", "RAG", "Docker", "HTCondor"],
+      "When my PI wanted to train a transformer on the Attie Lab's genomic data, I proposed a leaner RAG system instead — a chatbot that lets researchers query massive QTL and genetic datasets in plain English, and plot or analyze results on the fly.",
+    role: "Proposed & built",
+    tags: ["Python", "RAG", "LLM", "Embeddings", "FastAPI"],
     sections: [
       {
-        heading: "Overview",
-        body: "A natural-language query interface for UW Biochemistry phenotype data, built with FastAPI, vector embeddings, and local/remote LLMs. It's wired to live genetic databases (Ensembl, JAX, GTEx, IMPC) so annotations stay current across species without manual maintenance.",
+        heading: "The problem",
+        body: "Researchers in the Attie Lab work with massive genetic and QTL datasets that are hard to query without writing custom code or knowing the database structure. My PI wanted to train a transformer model directly on our internal data to build a natural-language research assistant — but that would have been computationally expensive, hard to maintain, and overkill for the retrieval-based questions researchers were actually asking.",
+      },
+      {
+        heading: "How it works",
+        body: "I proposed and built a Retrieval-Augmented Generation (RAG) system instead. Rather than training a model from scratch, it connects an existing LLM to a retrieval pipeline that embeds and indexes our internal datasets, documentation, and analysis outputs, so researchers can ask questions in natural language and pull insights straight from lab data. I also built custom tools that let the chatbot generate plots, graph QTL signals, compute statistical summaries, and work with structured biological datasets in real time.",
+      },
+      {
+        heading: "Why it matters",
+        body: "It dramatically lowered the barrier between researchers and complex genomic data. Instead of hunting for files, writing scripts, or hand-querying databases, researchers move from question to insight conversationally. Pairing RAG with domain-specific analysis tools made it less a generic AI assistant and more an intelligent research interface for biological data.",
       },
     ],
   },
