@@ -1,7 +1,6 @@
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import SocialLinks from "./SocialLinks";
-import Hills from "./Hills";
 
 const stats = [
   { value: "3.92", label: "GPA" },
@@ -17,8 +16,7 @@ const currentStack = [
 
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden py-20 px-6">
-      <Hills />
+    <section id="about" className="relative py-14 md:py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader number="01" label="ABOUT" title="About" />

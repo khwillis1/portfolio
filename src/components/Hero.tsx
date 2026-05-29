@@ -18,9 +18,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Cozy rolling hills — fills the lower space, stays well behind content */}
-      <Hills height="42%" />
-
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="grid md:grid-cols-[1fr_400px] lg:grid-cols-[1fr_460px] gap-6 md:gap-12 lg:gap-24 items-center">
 
@@ -136,7 +133,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator (desktop only — collides with content on short mobile screens) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
         <span className="font-mono text-[10px] tracking-widest uppercase">scroll</span>
         <svg
           className="animate-scroll-bounce"
@@ -153,6 +150,8 @@ export default function Hero() {
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
       </div>
+
+      <Hills />
     </section>
   );
 }
