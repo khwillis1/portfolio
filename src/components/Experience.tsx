@@ -46,18 +46,6 @@ const experiences = [
     tags: ["Python", "AWS", "XGBoost", "MCP", "FastAPI", "IoT"],
   },
   {
-    title: "Data Science Intern",
-    company: "Arrowhead Pharmaceuticals",
-    icon: <MoleculeIcon />,
-    period: "May 2025 – Aug 2025",
-    bullets: [
-      "Worked with the AI/ML team to build gradient-boosting models that predicted molecular and genetic properties for drug-discovery prioritization.",
-      "Automated ETL and CI/CD workflows for large experimental datasets, improving reproducibility and reducing manual preprocessing across research pipelines.",
-      "Built tooling for managing and validating biological data used in downstream modeling and analysis.",
-    ],
-    tags: ["Python", "scikit-learn", "Pandas", "ETL", "CI/CD", "Bioinformatics"],
-  },
-  {
     title: "Data Science Undergraduate Researcher",
     company: "UW–Madison Department of Biochemistry",
     icon: <DNAIcon />,
@@ -68,6 +56,18 @@ const experiences = [
       "Engineered distributed genomics workflows using DuckDB, Docker, HTCondor, and vector retrieval pipelines to support large-scale biological data analysis.",
     ],
     tags: ["Python", "FastAPI", "RAG", "DuckDB", "Docker", "HTCondor", "RShiny"],
+  },
+  {
+    title: "Data Science Intern",
+    company: "Arrowhead Pharmaceuticals",
+    icon: <MoleculeIcon />,
+    period: "May 2025 – Aug 2025",
+    bullets: [
+      "Worked with the AI/ML team to build gradient-boosting models that predicted molecular and genetic properties for drug-discovery prioritization.",
+      "Automated ETL and CI/CD workflows for large experimental datasets, improving reproducibility and reducing manual preprocessing across research pipelines.",
+      "Built tooling for managing and validating biological data used in downstream modeling and analysis.",
+    ],
+    tags: ["Python", "scikit-learn", "Pandas", "ETL", "CI/CD", "Bioinformatics"],
   },
 ];
 
