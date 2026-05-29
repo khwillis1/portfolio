@@ -1,4 +1,5 @@
-import ScrollReveal from "./ScrollReveal";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const stats = [
   { value: "3.92", label: "GPA" },
@@ -16,22 +17,13 @@ export default function About() {
   return (
     <section id="about" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="font-mono text-xs tracking-widest" style={{ color: "var(--text-3)" }}>01</span>
-            <h2
-              className="text-3xl"
-              style={{ fontFamily: "var(--font-dm-serif)", fontStyle: "italic", color: "var(--text)" }}
-            >
-              About
-            </h2>
-            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader number="01" label="ABOUT" title="About" />
+        </Reveal>
 
         <div className="grid md:grid-cols-5 gap-12">
           {/* Bio */}
-          <ScrollReveal className="md:col-span-3">
+          <Reveal className="md:col-span-3">
             <div className="space-y-4 leading-relaxed text-[1.025rem]" style={{ color: "var(--text-2)" }}>
               <p>
                 Hi, I&apos;m{" "}
@@ -62,7 +54,7 @@ export default function About() {
                       key={t}
                       className="font-mono text-xs px-2.5 py-1 rounded"
                       style={{
-                        background: "var(--bg-tinted)",
+                        background: "var(--surface)",
                         border: "1px solid var(--border)",
                         color: "var(--text-2)",
                       }}
@@ -73,32 +65,38 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </Reveal>
 
           {/* Stats */}
-          <ScrollReveal className="md:col-span-2" delay={100}>
+          <Reveal className="md:col-span-2" delay={100}>
             <div
-              className="grid grid-cols-2 gap-x-6 gap-y-5 border-l pl-6"
-              style={{ borderColor: "var(--border)" }}
+              className="p-6"
+              style={{
+                background: "var(--surface)",
+                boxShadow: "var(--shadow-md)",
+                borderRadius: "var(--radius)",
+              }}
             >
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <div
-                    className="text-2xl leading-none"
-                    style={{ fontFamily: "var(--font-dm-serif)", color: "var(--accent)" }}
-                  >
-                    {s.value}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-5">
+                {stats.map((s) => (
+                  <div key={s.label}>
+                    <div
+                      className="text-2xl leading-none"
+                      style={{ fontFamily: "var(--font-display)", color: "var(--accent)" }}
+                    >
+                      {s.value}
+                    </div>
+                    <div
+                      className="text-[10px] font-mono tracking-wider uppercase mt-1.5"
+                      style={{ color: "var(--text-3)" }}
+                    >
+                      {s.label}
+                    </div>
                   </div>
-                  <div
-                    className="text-[10px] font-mono tracking-wider uppercase mt-1.5"
-                    style={{ color: "var(--text-3)" }}
-                  >
-                    {s.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </ScrollReveal>
+          </Reveal>
         </div>
       </div>
     </section>

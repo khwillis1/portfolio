@@ -1,5 +1,8 @@
 "use client";
-import ScrollReveal from "./ScrollReveal";
+import { useState } from "react";
+import { motion } from "motion/react";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 // Small inline icons to signal science vs IoT context
 function IoTIcon() {
@@ -70,6 +73,86 @@ const experiences = [
   },
 ];
 
+function ExperienceCard({ exp }: { exp: typeof experiences[number] }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      whileHover={{ y: -2 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="rounded-xl p-6"
+      style={{
+        background: "var(--surface)",
+        borderRadius: "var(--radius)",
+        border: "1px solid var(--border)",
+        boxShadow: hovered ? "var(--shadow-lg)" : "var(--shadow-md)",
+        transition: "box-shadow 0.2s ease",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div>
+          <h3
+            className="font-medium text-lg leading-tight"
+            style={{ color: "var(--text)" }}
+          >
+            {exp.title}
+          </h3>
+          <p className="flex items-center gap-1.5 text-sm mt-0.5 font-mono" style={{ color: "var(--accent)" }}>
+            {exp.icon}
+            {exp.company}
+          </p>
+        </div>
+        <span
+          className="font-mono text-xs px-3 py-1 rounded whitespace-nowrap"
+          style={{
+            background: "var(--bg-tinted)",
+            border: "1px solid var(--border)",
+            color: "var(--text-3)",
+          }}
+        >
+          {exp.period}
+        </span>
+      </div>
+
+      <ul className="space-y-2 mb-5">
+        {exp.bullets.map((b, j) => (
+          <li
+            key={j}
+            className="flex gap-3 text-sm"
+            style={{ color: "var(--text-2)" }}
+          >
+            <span
+              className="mt-0.5 shrink-0"
+              style={{ color: "var(--accent)" }}
+            >
+              –
+            </span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-wrap gap-1.5">
+        {exp.tags.map((tag) => (
+          <span
+            key={tag}
+            className="font-mono text-xs px-2.5 py-1 rounded"
+            style={{
+              background: "var(--bg-tinted)",
+              border: "1px solid var(--border)",
+              color: "var(--text-3)",
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Experience() {
   return (
     <section
@@ -78,27 +161,9 @@ export default function Experience() {
       style={{ background: "var(--bg-tinted)" }}
     >
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-baseline gap-4 mb-10">
-            <span
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "var(--text-3)" }}
-            >
-              02
-            </span>
-            <h2
-              className="text-3xl"
-              style={{
-                fontFamily: "var(--font-dm-serif)",
-                fontStyle: "italic",
-                color: "var(--text)",
-              }}
-            >
-              Experience
-            </h2>
-            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader number="02" label="EXPERIENCE" title="Experience" />
+        </Reveal>
 
         <div className="relative pl-6">
           {/* Timeline line */}
@@ -109,7 +174,7 @@ export default function Experience() {
 
           <div className="space-y-8">
             {experiences.map((exp, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
+              <Reveal key={i} delay={i * 100}>
                 <div className="relative">
                   {/* Timeline dot */}
                   <div
@@ -119,81 +184,9 @@ export default function Experience() {
                       border: "2px solid var(--bg-tinted)",
                     }}
                   />
-
-                  <div
-                    className="rounded-xl p-6 transition-colors"
-                    style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--accent)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--border)")
-                    }
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                      <div>
-                        <h3
-                          className="font-medium text-lg leading-tight"
-                          style={{ color: "var(--text)" }}
-                        >
-                          {exp.title}
-                        </h3>
-                        <p className="flex items-center gap-1.5 text-sm mt-0.5 font-mono" style={{ color: "var(--accent)" }}>
-                          {exp.icon}
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span
-                        className="font-mono text-xs px-3 py-1 rounded whitespace-nowrap"
-                        style={{
-                          background: "var(--bg-tinted)",
-                          border: "1px solid var(--border)",
-                          color: "var(--text-3)",
-                        }}
-                      >
-                        {exp.period}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-2 mb-5">
-                      {exp.bullets.map((b, j) => (
-                        <li
-                          key={j}
-                          className="flex gap-3 text-sm"
-                          style={{ color: "var(--text-2)" }}
-                        >
-                          <span
-                            className="mt-0.5 shrink-0"
-                            style={{ color: "var(--accent)" }}
-                          >
-                            –
-                          </span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="font-mono text-xs px-2.5 py-1 rounded"
-                          style={{
-                            background: "var(--bg-tinted)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text-3)",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <ExperienceCard exp={exp} />
                 </div>
-              </ScrollReveal>
+              </Reveal>
             ))}
           </div>
         </div>
