@@ -1,5 +1,8 @@
 "use client";
-import ScrollReveal from "./ScrollReveal";
+import { useState } from "react";
+import { motion } from "motion/react";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 // Small inline icons to signal science vs IoT context
 function IoTIcon() {
@@ -36,12 +39,11 @@ const experiences = [
     icon: <IoTIcon />,
     period: "Jan 2026 – Present",
     bullets: [
-      "Building Merv — a customer-facing AI assistant that combines a conversational LLM with an XGBoost model to recommend the right air quality products for your home. Currently being integrated into the AprilAire website and mobile app.",
-      "Designed an MCP server that connects directly to thermostats and air-quality devices, making real-time adjustments based on weather forecasts and live sensor data — no manual override needed.",
-      "Built a \"heartbeat\" monitoring system that watches overnight data jobs and immediately surfaces failures to the engineering team, cutting time to catch a broken pipeline from hours to minutes.",
-      "Wrote ETL pipelines in AWS to pull in high-volume IoT telemetry from devices in the field and route it into the data warehouse for analytics and ML use.",
+      "Conceived and built Merv, an AI healthy-air assistant that recommends personalized HVAC and air-quality products through conversational interactions — currently in development, to be rolled out across AprilAire's web and mobile platforms.",
+      "Built MCP servers that connect LLM agents to thermostats, indoor air systems, and cloud APIs, enabling conversational device control and predictive automation based on weather forecasts and live sensor data.",
+      "Developed AWS ETL pipelines and monitoring infrastructure for ingesting IoT telemetry, surfacing pipeline failures quickly, and supporting downstream analytics and ML workflows.",
     ],
-    tags: ["Python", "AWS", "XGBoost", "LLM", "ETL", "MCP", "IoT"],
+    tags: ["Python", "AWS", "XGBoost", "MCP", "FastAPI", "IoT"],
   },
   {
     title: "Data Science Intern",
@@ -49,26 +51,105 @@ const experiences = [
     icon: <MoleculeIcon />,
     period: "May 2025 – Aug 2025",
     bullets: [
-      "Worked with the AI/ML team on gradient boosting models for predicting molecular and genetic properties — making drug discovery a little less like searching for a needle in a haystack.",
-      "Built an automated ETL pipeline with CI/CD that loaded large experiment datasets into a central research database, cutting manual data prep time in half and making results reproducible.",
-      "Preprocessed and feature-engineered high-dimensional biological datasets in Python.",
+      "Worked with the AI/ML team to build gradient-boosting models that predicted molecular and genetic properties for drug-discovery prioritization.",
+      "Automated ETL and CI/CD workflows for large experimental datasets, improving reproducibility and reducing manual preprocessing across research pipelines.",
+      "Built tooling for managing and validating biological data used in downstream modeling and analysis.",
     ],
-    tags: ["Python", "Pandas", "scikit-learn", "ETL", "CI/CD", "Bioinformatics"],
+    tags: ["Python", "scikit-learn", "Pandas", "ETL", "CI/CD", "Bioinformatics"],
   },
   {
     title: "Data Science Undergraduate Researcher",
-    company: "UW-Madison Department of Biochemistry",
+    company: "UW–Madison Department of Biochemistry",
     icon: <DNAIcon />,
     period: "Oct 2024 – Dec 2025",
     bullets: [
-      "Led the build of a RAG-style chatbot that lets biology researchers ask questions about phenotype data in plain English — no SQL required. Backed by FastAPI, vector embeddings, and both local and remote LLMs.",
-      "Connected the system to live genetic databases (Ensembl, JAX, GTEx, IMPC) so annotations stayed current across species without manual maintenance.",
-      "Built interactive dashboards in RShiny and Next.js for exploring QTL peaks and gene annotations.",
-      "Designed pipelines using DuckDB and SQLite to query billions of genetic records efficiently, containerized with Docker and HTCondor for reproducible distributed runs.",
+      "Proposed and built a RAG-based research chatbot that lets biologists query QTL and phenotype datasets in natural language instead of writing SQL or custom scripts.",
+      "Integrated live genomic resources including Ensembl, GTEx, IMPC, and JAX while building interactive dashboards for QTL exploration and gene annotation analysis.",
+      "Engineered distributed genomics workflows using DuckDB, Docker, HTCondor, and vector retrieval pipelines to support large-scale biological data analysis.",
     ],
-    tags: ["Python", "FastAPI", "RAG", "RShiny", "Next.js", "DuckDB", "Docker", "HTCondor"],
+    tags: ["Python", "FastAPI", "RAG", "DuckDB", "Docker", "HTCondor", "RShiny"],
   },
 ];
+
+function ExperienceCard({ exp }: { exp: typeof experiences[number] }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      whileHover={{ y: -2 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="rounded-xl p-6"
+      style={{
+        background: "var(--surface)",
+        borderRadius: "var(--radius)",
+        border: "1px solid var(--border)",
+        boxShadow: hovered ? "var(--shadow-lg)" : "var(--shadow-md)",
+        transition: "box-shadow 0.2s ease",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div>
+          <h3
+            className="font-medium text-lg leading-tight"
+            style={{ color: "var(--text)" }}
+          >
+            {exp.title}
+          </h3>
+          <p className="flex items-center gap-1.5 text-sm mt-0.5 font-mono" style={{ color: "var(--accent)" }}>
+            {exp.icon}
+            {exp.company}
+          </p>
+        </div>
+        <span
+          className="font-mono text-xs px-3 py-1 rounded whitespace-nowrap"
+          style={{
+            background: "var(--bg-tinted)",
+            border: "1px solid var(--border)",
+            color: "var(--text-3)",
+          }}
+        >
+          {exp.period}
+        </span>
+      </div>
+
+      <ul className="space-y-2 mb-5">
+        {exp.bullets.map((b, j) => (
+          <li
+            key={j}
+            className="flex gap-3 text-sm"
+            style={{ color: "var(--text-2)" }}
+          >
+            <span
+              className="mt-0.5 shrink-0"
+              style={{ color: "var(--accent)" }}
+            >
+              –
+            </span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-wrap gap-1.5">
+        {exp.tags.map((tag) => (
+          <span
+            key={tag}
+            className="font-mono text-xs px-2.5 py-1 rounded"
+            style={{
+              background: "var(--bg-tinted)",
+              border: "1px solid var(--border)",
+              color: "var(--text-3)",
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Experience() {
   return (
@@ -78,27 +159,9 @@ export default function Experience() {
       style={{ background: "var(--bg-tinted)" }}
     >
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="flex items-baseline gap-4 mb-10">
-            <span
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "var(--text-3)" }}
-            >
-              02
-            </span>
-            <h2
-              className="text-3xl"
-              style={{
-                fontFamily: "var(--font-dm-serif)",
-                fontStyle: "italic",
-                color: "var(--text)",
-              }}
-            >
-              Experience
-            </h2>
-            <div className="flex-1 h-px ml-2" style={{ background: "var(--border)" }} />
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader number="02" label="EXPERIENCE" title="Experience" />
+        </Reveal>
 
         <div className="relative pl-6">
           {/* Timeline line */}
@@ -109,7 +172,7 @@ export default function Experience() {
 
           <div className="space-y-8">
             {experiences.map((exp, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
+              <Reveal key={i} delay={i * 100}>
                 <div className="relative">
                   {/* Timeline dot */}
                   <div
@@ -119,81 +182,9 @@ export default function Experience() {
                       border: "2px solid var(--bg-tinted)",
                     }}
                   />
-
-                  <div
-                    className="rounded-xl p-6 transition-colors"
-                    style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--accent)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--border)")
-                    }
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                      <div>
-                        <h3
-                          className="font-medium text-lg leading-tight"
-                          style={{ color: "var(--text)" }}
-                        >
-                          {exp.title}
-                        </h3>
-                        <p className="flex items-center gap-1.5 text-sm mt-0.5 font-mono" style={{ color: "var(--accent)" }}>
-                          {exp.icon}
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span
-                        className="font-mono text-xs px-3 py-1 rounded whitespace-nowrap"
-                        style={{
-                          background: "var(--bg-tinted)",
-                          border: "1px solid var(--border)",
-                          color: "var(--text-3)",
-                        }}
-                      >
-                        {exp.period}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-2 mb-5">
-                      {exp.bullets.map((b, j) => (
-                        <li
-                          key={j}
-                          className="flex gap-3 text-sm"
-                          style={{ color: "var(--text-2)" }}
-                        >
-                          <span
-                            className="mt-0.5 shrink-0"
-                            style={{ color: "var(--accent)" }}
-                          >
-                            –
-                          </span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="font-mono text-xs px-2.5 py-1 rounded"
-                          style={{
-                            background: "var(--bg-tinted)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text-3)",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <ExperienceCard exp={exp} />
                 </div>
-              </ScrollReveal>
+              </Reveal>
             ))}
           </div>
         </div>

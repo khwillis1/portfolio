@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Work" },
+  { href: "#skills", label: "Skills" },
+  { href: "#interests", label: "Interests" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -25,9 +26,9 @@ export default function Navbar() {
       style={
         scrolled
           ? {
-              background: "rgba(253,240,242,0.97)",
+              background: "rgba(251,238,241,0.97)",
               backdropFilter: "blur(12px)",
-              boxShadow: "0 1px 0 var(--border), 0 4px 24px rgba(45,30,34,0.06)",
+              boxShadow: "0 1px 0 var(--border), 0 4px 24px rgba(36,27,30,0.05)",
             }
           : {}
       }
@@ -38,7 +39,7 @@ export default function Navbar() {
           href="#"
           className="text-xl"
           style={{
-            fontFamily: "var(--font-dm-serif)",
+            fontFamily: "var(--font-display)",
             fontStyle: "italic",
             color: "var(--text)",
           }}

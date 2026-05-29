@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import ScrollReveal from "./ScrollReveal";
+import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const EMAIL = "kalynnhopewillis@gmail.com";
 
@@ -38,28 +39,16 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 px-6">
       <div className="max-w-2xl mx-auto text-center">
-        <ScrollReveal>
-          <div className="flex items-baseline justify-center gap-4 mb-8">
-            <span
-              className="font-mono text-xs tracking-widest"
-              style={{ color: "var(--text-3)" }}
-            >
-              06
-            </span>
-            <h2
-              className="text-3xl"
-              style={{
-                fontFamily: "var(--font-dm-serif)",
-                fontStyle: "italic",
-                color: "var(--text)",
-              }}
-            >
-              Get in Touch
-            </h2>
-          </div>
-        </ScrollReveal>
+        <Reveal>
+          <SectionHeader
+            number="06"
+            label="CONTACT"
+            title="Get in Touch"
+            align="center"
+          />
+        </Reveal>
 
-        <ScrollReveal delay={80}>
+        <Reveal delay={80}>
           <p
             className="leading-relaxed mb-10 text-[1.025rem]"
             style={{ color: "var(--text-2)" }}
@@ -68,14 +57,16 @@ export default function Contact() {
             about data and AI. Whether you have a question or just want to say hi,
             my inbox is always open.
           </p>
-        </ScrollReveal>
+        </Reveal>
 
-        <ScrollReveal delay={140}>
-          {/* Email row */}
-          <div className="inline-flex items-center gap-3 mb-5 px-5 py-3 rounded-lg transition-colors"
+        <Reveal delay={140}>
+          {/* Email row — warm surface treatment */}
+          <div
+            className="inline-flex items-center gap-3 mb-5 px-5 py-3 rounded-lg transition-colors"
             style={{
-              background: "var(--bg-tinted)",
+              background: "var(--surface)",
               border: "1px solid var(--border)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <span
@@ -104,13 +95,13 @@ export default function Contact() {
             </button>
           </div>
 
-          {/* CTA */}
+          {/* CTA — hover darkens to var(--accent-deep), NOT green */}
           <div className="block mb-10">
             <a
               href={`mailto:${EMAIL}`}
               className="inline-block px-7 py-3 rounded-md text-sm font-medium text-white transition-colors"
               style={{ background: "var(--accent)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#265e44")}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-deep)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
             >
               Send a Message →
@@ -136,7 +127,7 @@ export default function Contact() {
               </a>
             ))}
           </div>
-        </ScrollReveal>
+        </Reveal>
       </div>
     </section>
   );
