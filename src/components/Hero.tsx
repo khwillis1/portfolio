@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import SocialLinks from "./SocialLinks";
 
 export default function Hero() {
   return (
@@ -52,11 +53,12 @@ export default function Hero() {
 
             {/* Bio */}
             <p className="leading-relaxed mb-7 max-w-md text-[1.025rem]" style={{ color: "var(--text-2)" }}>
-              Building cutting-edge AI products for IoT devices @ AprilAire
+              I build AI products and the data pipelines behind AprilAire&apos;s connected
+              air-quality devices — with a background in biology and genetics research.
             </p>
 
-            {/* CTA buttons */}
-            <div className="flex flex-wrap gap-3">
+            {/* CTA buttons + social */}
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
                 className="px-5 py-2.5 rounded-md text-sm font-medium text-white transition-colors"
@@ -81,6 +83,7 @@ export default function Hero() {
               >
                 Resume ↗
               </a>
+              <SocialLinks className="ml-1" />
             </div>
           </div>
 

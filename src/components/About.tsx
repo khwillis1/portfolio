@@ -1,5 +1,6 @@
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
+import SocialLinks from "./SocialLinks";
 
 const stats = [
   { value: "3.92", label: "GPA" },
@@ -26,22 +27,23 @@ export default function About() {
           <Reveal className="md:col-span-3">
             <div className="space-y-4 leading-relaxed text-[1.025rem]" style={{ color: "var(--text-2)" }}>
               <p>
-                Hi, I&apos;m{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">Kalynn Willis</span>
-                {" "}— a Statistics &amp; Data Science graduate of{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">UW-Madison</span>.
-                {" "}My background spans{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">molecular biology and genetics research</span>
-                {" "}— from building RAG chatbots for UW&apos;s Biochemistry department to working
-                on ML models for drug discovery at Arrowhead Pharmaceuticals.
-                That scientific foundation shapes how I think about data.
+                I&apos;m{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">Kalynn Willis</span>, a
+                Statistics &amp; Data Science grad from{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">UW-Madison</span>{" "}
+                who took the long way in. I started in{" "}
+                <span style={{ color: "var(--text)" }} className="font-medium">molecular biology and genetics</span>
+                {" "}— building RAG chatbots for UW&apos;s Biochemistry department and ML models
+                for drug discovery at Arrowhead Pharmaceuticals. It&apos;s an unconventional path
+                into data science, but it shaped how I work: I&apos;d take messy, real-world data
+                over a clean textbook dataset any day.
               </p>
               <p>
-                Currently a{" "}
+                Now I&apos;m a{" "}
                 <span style={{ color: "var(--text)" }} className="font-medium">Data Engineer Co-op at AprilAire</span>,
-                {" "}I&apos;m shipping Merv — an AI assistant that recommends air-quality products —
-                and building the MCP servers and ETL pipelines that connect our IoT devices to
-                real-time decisions.
+                {" "}building Merv — an AI assistant that helps people pick the right air-quality
+                products for their home — along with the MCP servers and ETL pipelines that turn
+                our IoT device data into real-time decisions.
               </p>
 
               <div className="pt-2">
@@ -63,6 +65,10 @@ export default function About() {
                     </span>
                   ))}
                 </div>
+              </div>
+
+              <div className="pt-2">
+                <SocialLinks withLabels />
               </div>
             </div>
           </Reveal>
