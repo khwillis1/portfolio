@@ -36,6 +36,7 @@ const interests = [
 export default function Interests() {
   return (
     <section
+      id="interests"
       className="py-20 px-6"
       style={{ borderTop: "1px solid var(--border)" }}
     >
