@@ -93,7 +93,7 @@ export default function Hero() {
             style={{ animationDelay: "0.35s", opacity: 0 }}
           >
             <div className="flex flex-col items-center">
-              <div className="relative w-full max-w-[260px] md:max-w-[340px]">
+              <div className="relative w-[260px] md:w-[340px] max-w-full">
                 {/* Subtle offset accent frame */}
                 <div
                   className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
