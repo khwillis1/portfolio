@@ -134,7 +134,20 @@ export default function Hero() {
       {/* Scroll indicator (desktop only — collides with content on short mobile screens) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2" style={{ color: "var(--text-3)" }}>
         <span className="font-mono text-[10px] tracking-widest uppercase">scroll</span>
-        <div className="w-px h-6" style={{ background: "linear-gradient(to bottom, var(--border-strong), transparent)" }} />
+        <svg
+          className="animate-scroll-bounce"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
       </div>
     </section>
   );
