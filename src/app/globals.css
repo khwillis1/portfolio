@@ -84,6 +84,31 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* Bouncy scroll cue */
+@keyframes scrollBounce {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(7px); }
+  45%  { transform: translateY(0); }
+  62%  { transform: translateY(4px); }
+  78%  { transform: translateY(0); }
+  90%  { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-scroll-bounce {
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+/* Rolling hills — seamless horizontal loop across two tiles */
+@keyframes hillsRoll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.hills-track {
+  animation: hillsRoll 16s linear infinite;
+}
+
 /* Interest photo hover zoom */
 .interest-photo-wrap img {
   transition: transform 0.35s ease;
