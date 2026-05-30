@@ -39,7 +39,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-start px-6 pt-14 pb-16 md:pt-28 md:pb-20 relative overflow-hidden"
+      className="min-h-screen flex items-start px-6 pt-10 pb-16 md:pt-28 md:pb-20 relative overflow-hidden"
     >
       {/* Barely-there warm radial background detail */}
       <div
@@ -57,7 +57,7 @@ export default function Hero() {
           <div className="animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
 
             {/* Status tag */}
-            <div className="inline-flex items-center gap-2 mb-7">
+            <div className="inline-flex items-center gap-2 mb-4 md:mb-7">
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: "var(--text-3)" }}>
                 Madison, WI · open to opportunities
@@ -85,7 +85,7 @@ export default function Hero() {
             </p>
 
             {/* Bio */}
-            <p className="leading-relaxed mb-7 max-w-md text-sm md:text-base" style={{ color: "var(--text-2)" }}>
+            <p className="leading-relaxed mb-4 md:mb-7 max-w-md text-sm md:text-base" style={{ color: "var(--text-2)" }}>
               I build AI products and the data pipelines behind AprilAire&apos;s connected
               air-quality devices — with a background in biology and genetics research.
             </p>
@@ -100,7 +100,7 @@ export default function Hero() {
             style={{ animationDelay: "0.35s", opacity: 0 }}
           >
             <div className="flex flex-col items-center">
-              <div className="relative w-[260px] md:w-[380px] lg:w-[440px] max-w-full">
+              <div className="relative w-[195px] md:w-[380px] lg:w-[440px] max-w-full">
                 {/* Subtle offset accent frame */}
                 <div
                   className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
@@ -137,9 +137,6 @@ export default function Hero() {
 
         </div>
 
-        {/* Mobile only: just the social links below the photo (the View
-            Projects / Resume buttons are desktop-only, in the text column). */}
-        <SocialLinks className="md:hidden w-full justify-center mt-8" />
       </div>
 
       {/* Scroll indicator (desktop only — collides with content on short mobile screens) */}
