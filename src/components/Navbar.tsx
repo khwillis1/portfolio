@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
-  { href: "#publications", label: "Research" },
   { href: "#projects", label: "Work" },
+  { href: "#publications", label: "Research" },
   { href: "#skills", label: "Skills" },
   { href: "#interests", label: "Interests" },
   { href: "#contact", label: "Contact" },
@@ -14,11 +14,36 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link for whichever section is in view.
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.getElementById(l.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+          );
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      // Detection band just below the fixed navbar.
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -50,18 +75,28 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm transition-colors"
-              style={{ color: "var(--text-2)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-2)")}
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                aria-current={isActive ? "true" : undefined}
+                className="text-sm transition-colors"
+                style={{ color: isActive ? "var(--accent)" : "var(--text-2)" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--accent)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = isActive
+                    ? "var(--accent)"
+                    : "var(--text-2)")
+                }
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <a
             href="/resume.pdf"
             className="text-sm px-3 py-1.5 rounded transition-colors"
@@ -108,17 +143,21 @@ export default function Navbar() {
             borderTop: "1px solid var(--border)",
           }}
         >
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm transition-colors"
-              style={{ color: "var(--text-2)" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                aria-current={isActive ? "true" : undefined}
+                className="text-sm transition-colors"
+                style={{ color: isActive ? "var(--accent)" : "var(--text-2)" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <a
             href="/resume.pdf"
             className="text-sm"
