@@ -1,6 +1,5 @@
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
-import SocialLinks from "./SocialLinks";
 
 const stats = [
   { value: "3.92", label: "GPA" },
@@ -24,9 +23,8 @@ export default function About() {
             <div className="space-y-4 leading-relaxed text-[1.025rem]" style={{ color: "var(--text-2)" }}>
               <p>
                 I&apos;m{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">Kalynn Willis</span>, a
-                Statistics &amp; Data Science graduate from{" "}
-                <span style={{ color: "var(--text)" }} className="font-medium">UW–Madison</span>{" "}
+                Kalynn Willis, a
+                Statistics &amp; Data Science graduate from UW–Madison{" "}
                 with a background that started in molecular biology and genetics before pulling me
                 into data science and engineering.
               </p>
@@ -45,9 +43,7 @@ export default function About() {
                 software engineering, data engineering, and applied machine learning.
               </p>
 
-              <div className="pt-2">
-                <SocialLinks withLabels />
-              </div>
+
             </div>
           </Reveal>
 
