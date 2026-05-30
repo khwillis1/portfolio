@@ -3,6 +3,38 @@ import Image from "next/image";
 import SocialLinks from "./SocialLinks";
 import Hills from "./Hills";
 
+function HeroActions({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex-wrap items-center gap-3 ${className}`}>
+      <a
+        href="#projects"
+        className="px-5 py-2.5 rounded-md text-sm font-medium text-white transition-colors"
+        style={{ background: "var(--accent)" }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-deep)")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
+      >
+        View Projects
+      </a>
+      <a
+        href="/resume.pdf"
+        className="px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+        style={{ border: "1px solid var(--border-strong)", color: "var(--text-2)" }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "var(--accent)";
+          e.currentTarget.style.color = "var(--accent)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "var(--border-strong)";
+          e.currentTarget.style.color = "var(--text-2)";
+        }}
+      >
+        Resume ↗
+      </a>
+      <SocialLinks className="ml-1" />
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
     <section
@@ -58,34 +90,8 @@ export default function Hero() {
               air-quality devices — with a background in biology and genetics research.
             </p>
 
-            {/* CTA buttons + social */}
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="#projects"
-                className="px-5 py-2.5 rounded-md text-sm font-medium text-white transition-colors"
-                style={{ background: "var(--accent)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-deep)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
-              >
-                View Projects
-              </a>
-              <a
-                href="/resume.pdf"
-                className="px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
-                style={{ border: "1px solid var(--border-strong)", color: "var(--text-2)" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                  e.currentTarget.style.color = "var(--accent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border-strong)";
-                  e.currentTarget.style.color = "var(--text-2)";
-                }}
-              >
-                Resume ↗
-              </a>
-              <SocialLinks className="ml-1" />
-            </div>
+            {/* CTA buttons + social — desktop: under bio (mobile shows below photo) */}
+            <HeroActions className="hidden md:flex" />
           </div>
 
           {/* Right: photo (shown on all sizes; sized responsively) */}
@@ -126,6 +132,9 @@ export default function Hero() {
               <p className="text-center text-[10px] font-mono tracking-widest uppercase mt-3" style={{ color: "var(--text-3)" }}>
                 UW–Madison, 2026
               </p>
+
+              {/* CTA buttons + social — mobile only: below the photo */}
+              <HeroActions className="flex md:hidden justify-center mt-7" />
             </div>
           </div>
 
