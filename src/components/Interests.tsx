@@ -4,9 +4,9 @@ import Reveal from "./Reveal";
 
 const interests = [
   {
-    label: "Walking",
+    label: "Hiking",
     image: "/interest-walking.jpg",
-    alt: "Walking in snowy mountains",
+    alt: "Hiking in snowy mountains",
     description: null,
     height: 220,
   },

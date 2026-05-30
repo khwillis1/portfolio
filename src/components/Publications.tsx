@@ -52,7 +52,7 @@ export default function Publications() {
     <section id="publications" className="relative py-14 md:py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
-          <SectionHeader number="03" label="PUBLICATIONS" title="Publications" />
+          <SectionHeader number="04" label="PUBLICATIONS" title="Publications" />
         </Reveal>
 
         <div className="space-y-6">
