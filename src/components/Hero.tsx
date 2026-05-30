@@ -5,7 +5,7 @@ import Hills from "./Hills";
 
 function HeroActions({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex-wrap items-center gap-3 ${className}`}>
+    <div className={`flex-wrap items-center ${className}`}>
       <a
         href="#projects"
         className="px-5 py-2.5 rounded-md text-sm font-medium text-white transition-colors"
@@ -39,7 +39,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-start px-6 pt-20 pb-16 md:pt-28 md:pb-20 relative overflow-hidden"
+      className="min-h-screen flex items-start px-6 pt-14 pb-16 md:pt-28 md:pb-20 relative overflow-hidden"
     >
       {/* Barely-there warm radial background detail */}
       <div
@@ -91,7 +91,7 @@ export default function Hero() {
             </p>
 
             {/* CTA buttons + social — desktop: under bio (mobile shows below photo) */}
-            <HeroActions className="hidden md:flex" />
+            <HeroActions className="hidden md:flex gap-3" />
           </div>
 
           {/* Right: photo (shown on all sizes; sized responsively) */}
@@ -100,7 +100,7 @@ export default function Hero() {
             style={{ animationDelay: "0.35s", opacity: 0 }}
           >
             <div className="flex flex-col items-center">
-              <div className="relative w-[185px] md:w-[380px] lg:w-[440px] max-w-full">
+              <div className="relative w-[260px] md:w-[380px] lg:w-[440px] max-w-full">
                 {/* Subtle offset accent frame */}
                 <div
                   className="absolute inset-0 translate-x-2.5 translate-y-2.5 pointer-events-none"
@@ -132,13 +132,14 @@ export default function Hero() {
               <p className="text-center text-[10px] font-mono tracking-widest uppercase mt-3" style={{ color: "var(--text-3)" }}>
                 UW–Madison, 2026
               </p>
-
-              {/* CTA buttons + social — mobile only: below the photo */}
-              <HeroActions className="flex md:hidden justify-center mt-7" />
             </div>
           </div>
 
         </div>
+
+        {/* Mobile only: just the social links below the photo (the View
+            Projects / Resume buttons are desktop-only, in the text column). */}
+        <SocialLinks className="md:hidden w-full justify-center mt-8" />
       </div>
 
       {/* Scroll indicator (desktop only — collides with content on short mobile screens) */}
