@@ -117,20 +117,35 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile toggle — animated bar morph */}
         <button
-          className="md:hidden transition-colors"
-          style={{ color: "var(--text-2)" }}
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <span
+            className="block h-px w-5 origin-center transition-all duration-300 ease-in-out"
+            style={{
+              background: "var(--text-2)",
+              transform: menuOpen ? "translateY(6px) rotate(45deg)" : "none",
+            }}
+          />
+          <span
+            className="block h-px w-5 transition-all duration-300 ease-in-out"
+            style={{
+              background: "var(--text-2)",
+              opacity: menuOpen ? 0 : 1,
+              transform: menuOpen ? "scaleX(0)" : "none",
+            }}
+          />
+          <span
+            className="block h-px w-5 origin-center transition-all duration-300 ease-in-out"
+            style={{
+              background: "var(--text-2)",
+              transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "none",
+            }}
+          />
         </button>
       </div>
 

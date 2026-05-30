@@ -60,7 +60,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 mb-4 md:mb-7">
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />
               <span className="text-xs font-mono tracking-wider" style={{ color: "var(--text-3)" }}>
-                Madison, WI · open to opportunities
+                Madison, WI
               </span>
             </div>
 
