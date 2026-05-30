@@ -38,7 +38,7 @@ export default function Interests() {
     <section
       id="interests"
       className="relative py-14 md:py-20 px-6"
-      style={{ borderTop: "1px solid var(--border)" }}
+      style={{ background: "var(--bg-tinted)" }}
     >
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
