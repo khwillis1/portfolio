@@ -21,7 +21,7 @@ const categories = [
   },
   {
     title: "Tools & Web",
-    skills: ["Git", "Jira", "Grafana", "RShiny", "Next.js", "TailwindCSS", "Cursor"],
+    skills: ["Grafana", "RShiny", "Next.js", "TailwindCSS"],
   },
 ];
 
