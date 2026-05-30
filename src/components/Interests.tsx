@@ -43,7 +43,7 @@ export default function Interests() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
           <SectionHeader
-            number="05"
+            number="06"
             label="BEYOND THE CODE"
             title="Beyond the Code"
           />

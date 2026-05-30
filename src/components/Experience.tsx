@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
@@ -32,7 +32,17 @@ function DNAIcon() {
   );
 }
 
-const experiences = [
+type Experience = {
+  title: string;
+  company: string;
+  icon: ReactNode;
+  period: string;
+  bullets: string[];
+  tags: string[];
+  paper?: { label: string; href: string };
+};
+
+const experiences: Experience[] = [
   {
     title: "Data Engineer Co-op",
     company: "AprilAire",
@@ -56,6 +66,10 @@ const experiences = [
       "Engineered distributed genomics workflows using DuckDB, Docker, HTCondor, and vector retrieval pipelines to support large-scale biological data analysis.",
     ],
     tags: ["Python", "FastAPI", "RAG", "DuckDB", "Docker", "HTCondor", "RShiny"],
+    paper: {
+      label: "Co-authored bioRxiv preprint on gene/isoform QTL in Diversity Outbred mice",
+      href: "#publications",
+    },
   },
   {
     title: "Data Science Intern",
@@ -71,7 +85,7 @@ const experiences = [
   },
 ];
 
-function ExperienceCard({ exp }: { exp: typeof experiences[number] }) {
+function ExperienceCard({ exp }: { exp: Experience }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -131,6 +145,31 @@ function ExperienceCard({ exp }: { exp: typeof experiences[number] }) {
           </li>
         ))}
       </ul>
+
+      {exp.paper && (
+        <a
+          href={exp.paper.href}
+          className="flex items-center gap-2 text-sm mb-5 group"
+          style={{ color: "var(--accent)" }}
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="shrink-0"
+            aria-hidden="true"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          <span className="group-hover:underline">{exp.paper.label} →</span>
+        </a>
+      )}
 
       <div className="flex flex-wrap gap-1.5">
         {exp.tags.map((tag) => (
