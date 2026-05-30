@@ -41,7 +41,7 @@ export default function Contact() {
       <div className="relative z-10 max-w-2xl mx-auto text-center">
         <Reveal>
           <SectionHeader
-            number="06"
+            number="07"
             label="CONTACT"
             title="Get in Touch"
             align="center"

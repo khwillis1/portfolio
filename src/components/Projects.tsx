@@ -45,7 +45,7 @@ export default function Projects() {
     <section id="projects" className="relative py-14 md:py-20 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
-          <SectionHeader number="03" label="SELECTED WORK" title="Selected Work" />
+          <SectionHeader number="04" label="SELECTED WORK" title="Selected Work" />
         </Reveal>
 
         {/* Featured card — Merv */}

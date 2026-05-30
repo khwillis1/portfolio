@@ -34,7 +34,7 @@ export default function Skills() {
     >
       <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal>
-          <SectionHeader number="04" label="SKILLS" title="Skills" />
+          <SectionHeader number="05" label="SKILLS" title="Skills" />
         </Reveal>
 
         <div style={{ borderTop: "1px solid var(--border-strong)" }}>
