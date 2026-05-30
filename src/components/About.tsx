@@ -9,10 +9,6 @@ const stats = [
   { value: "B.S.", label: "Stats & Data Science" },
 ];
 
-const currentStack = [
-  "Python", "AWS", "SQL", "FastAPI", "PyTorch", "Docker", "TypeScript", "Next.js", "Javascript"
-];
-
 
 export default function About() {
   return (
@@ -48,27 +44,6 @@ export default function About() {
                 people can interact with directly. Most of my work ends up somewhere between
                 software engineering, data engineering, and applied machine learning.
               </p>
-
-              <div className="pt-2">
-                <p className="font-mono text-[10px] tracking-widest uppercase mb-3" style={{ color: "var(--text-3)" }}>
-                  Currently working with
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {currentStack.map((t) => (
-                    <span
-                      key={t}
-                      className="font-mono text-xs px-2.5 py-1 rounded"
-                      style={{
-                        background: "var(--surface)",
-                        border: "1px solid var(--border)",
-                        color: "var(--text-2)",
-                      }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
 
               <div className="pt-2">
                 <SocialLinks withLabels />
