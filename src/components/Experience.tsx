@@ -49,7 +49,7 @@ const experiences: Experience[] = [
     icon: <IoTIcon />,
     period: "Jan 2026 – Present",
     bullets: [
-      "Conceived and built Merv, an AI healthy-air assistant that recommends personalized HVAC and air-quality products through conversational interactions — currently in development, to be rolled out across AprilAire's web and mobile platforms.",
+      "Proposed and built Merv, an AI healthy-air assistant that recommends personalized HVAC and air-quality products through conversational interactions — currently in development, to be rolled out across AprilAire's web and mobile platforms.",
       "Built MCP servers that connect LLM agents to thermostats, indoor air systems, and cloud APIs, enabling conversational device control and predictive automation based on weather forecasts and live sensor data.",
       "Developed AWS ETL pipelines and monitoring infrastructure for ingesting IoT telemetry, surfacing pipeline failures quickly, and supporting downstream analytics and ML workflows.",
     ],

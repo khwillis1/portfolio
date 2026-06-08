@@ -17,8 +17,8 @@ export const projects: Project[] = [
     num: "01",
     name: "Merv — AI Healthy-Air Assistant",
     blurb:
-      "Merv is my brainchild — an AI healthy-air assistant I pitched after hearing one of AprilAire's core goals: get more of its products into homes that already have one. It interviews a customer about their home and comfort issues, then builds their ideal setup — no HVAC knowledge required.",
-    role: "My idea — conceived & built",
+      "AprilAire's Merv is an AI healthy-air assistant I pitched after hearing one of the company's core goals: get more of its products into homes that already have one. Using an existing marketing mascot as its face, it interviews a customer about their home and comfort issues, then builds their ideal setup — no HVAC knowledge required.",
+    role: "Pitched & built",
     tags: ["Python", "XGBoost", "LLM", "AWS", "FastAPI"],
     sections: [
       {
